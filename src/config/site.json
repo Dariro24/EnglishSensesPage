@@ -1,0 +1,17 @@
+{
+  "site": {
+    "name": "English Senses",
+    "logo": "/media/shared/logo.png"
+  },
+  "navigation": [
+    { "label": "Inicio", "href": "/" },
+    { "label": "Nosotros", "href": "/nosotros" },
+    { "label": "Cursos", "href": "/cursos" },
+    { "label": "Servicios", "href": "/servicios" },
+    { "label": "Mide tu inglés", "href": "/mide-tu-ingles" }
+  ],
+  "links": {
+    "inscribeteAhora": "https://forms.gle/vPUR1E2XppAZgzURA",
+    "whatsapp": "https://wa.me/573005986546"
+  }
+}

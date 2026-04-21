@@ -1,0 +1,91 @@
+{
+  "hero": {
+    "title": "Mide tu\nInglés",
+    "intro": "¿No estás seguro de tu nivel de inglés? ¡Descúbrelo con nuestra prueba gratuita y accede a beneficios exclusivos!",
+    "subtitle": "¿Cómo funciona?",
+    "bullets": [
+      "Escoge un nivel de inglés.",
+      "Realiza nuestro test digital de forma rápida y sencilla.",
+      "Recibe tu resultado de forma inmediata.",
+      "Obtén recomendaciones personalizadas según tu resultado."
+    ],
+    "image": "/media/mide-tu-ingles/robot.gif",
+    "imageAlt": "Robot de la prueba de inglés"
+  },
+  "levelButtons": [
+    {
+      "label": "A1",
+      "href": "https://forms.gle/UmnseKgHr6pYm2Dh8"
+    },
+    {
+      "label": "A2",
+      "href": "https://forms.gle/LM2Azx8tR78LXZfb9"
+    },
+    {
+      "label": "B1",
+      "href": "https://forms.gle/A6oik9GvNUcyjQLv8"
+    }
+  ],
+  "levelsA": {
+    "id": "niveles-a",
+    "title": "Niveles de Inglés\nsegún el MCER",
+    "intro": "Mide tu inglés y descubre tu nivel (A1-B2).",
+    "selectorText": "Escoge el nivel en el que quieres poner a prueba:",
+    "groupTitle": "A°",
+    "groups": [
+      {
+        "heading": "A1 - Principiante",
+        "items": [
+          "Puedes entender y usar frases básicas.",
+          "Puedes presentarte y dar información simple sobre.",
+          "Necesitas hablar despacio y con frases cortas."
+        ]
+      },
+      {
+        "heading": "A2 - Básico",
+        "items": [
+          "Puedes comunicarte en situaciones cotidianas.",
+          "Entiendes frases sobre familia, compras y trabajo.",
+          "Puedes participar en conversaciones simples."
+        ]
+      }
+    ]
+  },
+  "levelsB": {
+    "id": "niveles-b",
+    "title": "B°",
+    "intro": "En este, no incluimos el nivel C1 y C2",
+    "selectorText": "Escoge el nivel en el que quieres ponerte a prueba:",
+    "ctaText": "Da el primer paso. ¡Mide tu inglés hoy mismo!",
+    "note": "Haz clic en el botón y comienza ahora.",
+    "groups": [
+      {
+        "heading": "B1 - Intermedio",
+        "items": [
+          "Te desenvuelves en viajes y conversaciones sobre temas familiares.",
+          "Entiendes la idea principal de textos claros."
+        ]
+      },
+      {
+        "heading": "B2 - Intermedio Alto",
+        "items": [
+          "Puedes hablar con hablantes nativos con fluidez.",
+          "Entiendes textos más complejos y expresas opiniones.",
+          "Puedes escribir ensayos y argumentos bien estructurados."
+        ]
+      }
+    ]
+  },
+  "benefits": {
+    "id": "beneficios-test",
+    "title": "Beneficios al realizar\nel test",
+    "bullets": [
+      "Descuento del 10% off x3 meses en tu mensualidad si en los próximos 2 meses ingresas a nuestro curso.",
+      "Acceso a una mini lección exclusiva según tu nivel.",
+      "Asesoría gratuita para trazar tu plan de aprendizaje."
+    ],
+    "image": "/media/mide-tu-ingles/beneficios-test.gif",
+    "imageAlt": "Ilustración de beneficios del test",
+    "selectorText": "Escoge el nivel en el que quieres ponerte a prueba:"
+  }
+}

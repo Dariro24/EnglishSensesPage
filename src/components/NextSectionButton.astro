@@ -1,0 +1,20 @@
+---
+interface Props {
+  target: string;
+  label?: string;
+}
+
+const {
+  target,
+  label = "Ir a la siguiente sección"
+} = Astro.props;
+---
+
+<button
+  class="section-next-button"
+  type="button"
+  aria-label={label}
+  data-next-target={target}
+>
+  <span class="section-next-button__icon"></span>
+</button>

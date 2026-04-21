@@ -1,0 +1,146 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import Footer from "../components/Footer.astro";
+import NextSectionButton from "../components/NextSectionButton.astro";
+import "../styles/nosotros.css";
+import nosotrosContent from "../config/pages/nosotros.json";
+
+const { intro, sections } = nosotrosContent;
+const firstSection = sections[0];
+const lastSection = sections[sections.length - 1];
+---
+
+<MainLayout title="Nosotros" showFooter={false}>
+  <section id="nosotros-intro" class="nosotros-section nosotros-section--intro">
+    <div class="site-shell">
+      <div class="nosotros-intro">
+        <div class="nosotros-intro__content">
+          <h1 class="nosotros-intro__title">{intro.title}</h1>
+
+          <div class="nosotros-intro__text">
+            {intro.paragraphs.map((paragraph) => (
+              <p>{paragraph}</p>
+            ))}
+          </div>
+        </div>
+
+        <div class="nosotros-intro__media">
+          <img
+            src={intro.image}
+            alt={intro.imageAlt}
+            class="nosotros-intro__image"
+          />
+        </div>
+      </div>
+
+      <div class="nosotros-section__next">
+        <NextSectionButton target={`#${firstSection.id}`} />
+      </div>
+    </div>
+  </section>
+
+  <section id={firstSection.id} class="nosotros-section nosotros-section--dual">
+  <div class="site-shell">
+    <div class="nosotros-dual">
+
+      <!-- Fila 1 izquierda: imagen estudiante -->
+      <img
+        src={firstSection.left.image}
+        alt={firstSection.left.imageAlt}
+        class="nosotros-dual__image--student"
+      />
+
+      <!-- Fila 1 derecha: ¿Qué nos motiva? -->
+      <div class="nosotros-dual__block--motiva">
+        <h2 class="nosotros-dual__title">{firstSection.right.title}</h2>
+        <div class="nosotros-dual__text">
+          {firstSection.right.paragraphs.map((paragraph) => (
+            <p>{paragraph}</p>
+          ))}
+        </div>
+      </div>
+
+      <!-- Fila 2 izquierda: ¿Cómo lo Hacemos? -->
+      <div class="nosotros-dual__block--hacemos">
+        <h2 class="nosotros-dual__title">{firstSection.left.title}</h2>
+        <div class="nosotros-dual__text">
+          {firstSection.left.paragraphs.map((paragraph) => (
+            <p>{paragraph}</p>
+          ))}
+        </div>
+      </div>
+
+      <!-- Fila 2 derecha: imagen puzzle -->
+      <img
+        src={firstSection.right.image}
+        alt={firstSection.right.imageAlt}
+        class="nosotros-dual__image--puzzle"
+      />
+
+    </div>
+
+    <div class="nosotros-section__next">
+      <NextSectionButton target={`#${lastSection.id}`} />
+    </div>
+  </div>
+</section>
+
+  <section id={lastSection.id} class="nosotros-section nosotros-section--vision">
+    <div class="site-shell nosotros-vision__shell">
+      <div class="nosotros-vision">
+        <div class="nosotros-vision__media">
+          <img
+            src={lastSection.image}
+            alt={lastSection.imageAlt}
+            class="nosotros-vision__image"
+          />
+        </div>
+
+        <div class="nosotros-vision__content">
+          <h2 class="nosotros-vision__title">{lastSection.title}</h2>
+          <p class="nosotros-vision__statement">{lastSection.statement}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="nosotros-section__footer">
+      <Footer />
+    </div>
+  </section>
+
+  <script>
+    const getHeaderOffset = (): number => {
+      const header = document.querySelector(".site-header") as HTMLElement | null;
+      if (!header) return 0;
+      return header.getBoundingClientRect().height + 10;
+    };
+
+    const scrollToWithOffset = (selector: string): void => {
+      const target = document.querySelector(selector) as HTMLElement | null;
+      if (!target) return;
+
+      const top =
+        window.scrollY +
+        target.getBoundingClientRect().top -
+        getHeaderOffset();
+
+      window.scrollTo({
+        top,
+        behavior: "smooth"
+      });
+    };
+
+    const nextButtons = document.querySelectorAll(
+      "[data-next-target]"
+    ) as NodeListOf<HTMLElement>;
+
+    nextButtons.forEach((button: HTMLElement) => {
+      button.addEventListener("click", () => {
+        const targetSelector = button.getAttribute("data-next-target");
+        if (!targetSelector) return;
+
+        scrollToWithOffset(targetSelector);
+      });
+    });
+  </script>
+</MainLayout>

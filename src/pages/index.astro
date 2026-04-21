@@ -1,0 +1,170 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import "../styles/home.css";
+import siteContent from "../config/site.json";
+import homeContent from "../config/home.json";
+import NextSectionButton from "../components/NextSectionButton.astro";
+import SectionSheet from "../components/SectionSheet.astro";
+import Footer from "../components/Footer.astro";
+
+const { links } = siteContent;
+const { home, sections } = homeContent;
+
+const regularSections = sections.slice(0, -1);
+const finalSection = sections[sections.length - 1];
+---
+
+<MainLayout title="Inicio" showFooter={false}>
+  <section id="home" class="home-hero section-sheet">
+    <div class="site-shell home-hero__inner">
+      <div class="home-hero__character-wrap">
+        <img
+          src={home.heroCharacter}
+          alt="Personaje principal"
+          class="home-hero__character"
+        />
+      </div>
+
+      <div class="home-hero__message-wrap">
+        <img
+          src={home.messageImage}
+          alt={home.messageAlt}
+          class="home-hero__message-image"
+        />
+      </div>
+
+      <div class="home-hero__arrow-wrap" aria-hidden="true">
+        <img
+          src={home.arrowGif}
+          alt=""
+          class="home-hero__arrow-gif"
+        />
+      </div>
+
+      <div class="home-hero__cta-wrap">
+        <a href={links.inscribeteAhora} class="primary-cta" target="_blank" rel="noopener noreferrer">
+          {home.primaryButtonLabel}
+        </a>
+      </div>
+
+      <p class="home-hero__description">{home.description}</p>
+
+      <div class="home-hero__actions">
+        <NextSectionButton target="#rompe-barreras" />
+      </div>
+    </div>
+  </section>
+
+  {regularSections.map((section, index) => {
+    const nextTarget =
+      index < regularSections.length - 1
+        ? `#${regularSections[index + 1].id}`
+        : `#${finalSection.id}`;
+
+    const variant =
+      section.imagePosition === "split"
+        ? "split"
+        : section.imagePosition === "final"
+          ? "final"
+          : "standard";
+
+    const reverse = section.imagePosition === "right";
+
+    return (
+      <SectionSheet
+        id={section.id}
+        title={section.title}
+        description={section.description}
+        bullets={section.bullets}
+        image={section.image}
+        imageAlt={section.imageAlt}
+        imageSecondary={section.imageSecondary}
+        imageSecondaryAlt={section.imageSecondaryAlt}
+        variant={variant}
+        reverse={reverse}
+        nextTarget={nextTarget}
+        ctaLabel={variant === "final" ? home.primaryButtonLabel : ""}
+        ctaHref={variant === "final" ? links.inscribeteAhora : "#"}
+      />
+    );
+  })}
+
+  <section id={finalSection.id} class="section-sheet section-sheet--final">
+    <div class="site-shell section-sheet__final-shell">
+      <div class="info-section__final">
+        <div class="info-section__final-left">
+          <img
+            src={finalSection.image}
+            alt={finalSection.imageAlt}
+            class="info-section__image info-section__image--final-left"
+          />
+        </div>
+
+        <div class="info-section__final-right">
+          <h2 class="info-section__title">
+            {finalSection.title.split("\n").map((line) => (
+              <>
+                {line}
+                <br />
+              </>
+            ))}
+          </h2>
+
+          <a href={links.inscribeteAhora} class="primary-cta" target="_blank" rel="noopener noreferrer">
+            {home.primaryButtonLabel}
+          </a>
+
+          <p class="info-section__description">
+            {finalSection.description}
+          </p>
+
+          <img
+            src={finalSection.imageSecondary}
+            alt={finalSection.imageSecondaryAlt}
+            class="info-section__image info-section__image--final-right"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div class="section-sheet__footer-wrap">
+      <Footer />
+    </div>
+  </section>
+
+  <script>
+    const getHeaderOffset = (): number => {
+      const header = document.querySelector(".site-header") as HTMLElement | null;
+      if (!header) return 0;
+      return header.getBoundingClientRect().height + 10;
+    };
+
+    const scrollToWithOffset = (selector: string): void => {
+      const target = document.querySelector(selector) as HTMLElement | null;
+      if (!target) return;
+
+      const top =
+        window.scrollY +
+        target.getBoundingClientRect().top -
+        getHeaderOffset();
+
+      window.scrollTo({
+        top,
+        behavior: "smooth"
+      });
+    };
+
+    const nextButtons = document.querySelectorAll(
+      "[data-next-target]"
+    ) as NodeListOf<HTMLElement>;
+
+    nextButtons.forEach((button: HTMLElement) => {
+      button.addEventListener("click", () => {
+        const targetSelector = button.getAttribute("data-next-target");
+        if (!targetSelector) return;
+
+        scrollToWithOffset(targetSelector);
+      });
+    });
+  </script>
+</MainLayout>

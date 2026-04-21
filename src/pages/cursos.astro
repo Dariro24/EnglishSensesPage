@@ -1,0 +1,154 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import Footer from "../components/Footer.astro";
+import NextSectionButton from "../components/NextSectionButton.astro";
+import "../styles/cursos.css";
+import siteContent from "../config/site.json";
+import cursosContent from "../config/pages/cursos.json";
+
+const { links } = siteContent;
+const { hero, sections } = cursosContent;
+
+const firstSection = sections[0];
+const finalSection = sections[1];
+---
+
+<MainLayout title="Cursos" showFooter={false}>
+  <section id="curso-giving-tools" class="curso-section curso-section--hero">
+    <div class="site-shell curso-hero">
+      <div class="curso-hero__content">
+        <h1 class="curso-hero__title">{hero.title}</h1>
+        <p class="curso-hero__lead">{hero.lead}</p>
+
+        <ul class="curso-hero__list">
+          {hero.bullets.map((item) => (
+            <li>{item}</li>
+          ))}
+        </ul>
+
+        <p class="curso-hero__closing">{hero.closing}</p>
+      </div>
+
+      <div class="curso-hero__cta-panel">
+        <a href={links.inscribeteAhora} class="primary-cta curso-hero__cta" target="_blank" rel="noopener noreferrer">
+          {hero.ctaLabel}
+        </a>
+        <p class="curso-hero__cta-text">{hero.ctaText}</p>
+      </div>
+    </div>
+
+    <div class="curso-section__next">
+      <NextSectionButton target={`#${firstSection.id}`} />
+    </div>
+  </section>
+
+  <section id={firstSection.id} class="curso-section curso-section--audience">
+    <div class="site-shell curso-split">
+      <div class="curso-split__content">
+        <h2 class="curso-split__title">
+          {firstSection.title.split("\n").map((line) => (
+            <>
+              {line}
+              <br />
+            </>
+          ))}
+        </h2>
+
+        <div class="curso-split__text">
+          {firstSection.paragraphs?.map((paragraph) => (
+            <p>{paragraph}</p>
+          ))}
+        </div>
+      </div>
+
+      <div class="curso-split__media">
+        <img
+          src={firstSection.image}
+          alt={firstSection.imageAlt}
+          class="curso-split__image curso-split__image--audience"
+        />
+      </div>
+    </div>
+
+    <div class="curso-section__next">
+      <NextSectionButton target={`#${finalSection.id}`} />
+    </div>
+  </section>
+
+  <section id={finalSection.id} class="curso-section curso-section--final">
+    <div class="site-shell curso-final__shell">
+      <div class="curso-final">
+        <div class="curso-final__media">
+          <img
+            src={finalSection.image}
+            alt={finalSection.imageAlt}
+            class="curso-final__image"
+          />
+        </div>
+
+        <div class="curso-final__content">
+          <h2 class="curso-final__title">
+            {finalSection.title.split("\n").map((line) => (
+              <>
+                {line}
+                <br />
+              </>
+            ))}
+          </h2>
+
+          <ul class="curso-final__list">
+            {finalSection.bullets?.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+
+          <a href={links.inscribeteAhora} class="primary-cta curso-final__cta" target="_blank" rel="noopener noreferrer">
+            {finalSection.ctaLabel}
+          </a>
+
+          <p class="curso-final__cta-text">{finalSection.ctaText}</p>
+          <p class="curso-final__note">{finalSection.note}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="curso-section__footer">
+      <Footer />
+    </div>
+  </section>
+
+  <script>
+    const getHeaderOffset = (): number => {
+      const header = document.querySelector(".site-header") as HTMLElement | null;
+      if (!header) return 0;
+      return header.getBoundingClientRect().height + 10;
+    };
+
+    const scrollToWithOffset = (selector: string): void => {
+      const target = document.querySelector(selector) as HTMLElement | null;
+      if (!target) return;
+
+      const top =
+        window.scrollY +
+        target.getBoundingClientRect().top -
+        getHeaderOffset();
+
+      window.scrollTo({
+        top,
+        behavior: "smooth"
+      });
+    };
+
+    const nextButtons = document.querySelectorAll(
+      "[data-next-target]"
+    ) as NodeListOf<HTMLElement>;
+
+    nextButtons.forEach((button: HTMLElement) => {
+      button.addEventListener("click", () => {
+        const targetSelector = button.getAttribute("data-next-target");
+        if (!targetSelector) return;
+        scrollToWithOffset(targetSelector);
+      });
+    });
+  </script>
+</MainLayout>

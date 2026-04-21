@@ -1,0 +1,96 @@
+---
+import siteContent from "../config/site.json";
+
+const pathname = Astro.url.pathname;
+const { site, navigation } = siteContent;
+---
+
+<header class="site-header">
+  <div class="site-shell site-header__inner">
+    <a href="/" class="site-header__brand" aria-label="Ir al inicio">
+      <img
+        src={site.logo}
+        alt={site.name}
+        class="site-header__logo"
+      />
+    </a>
+
+    <nav class="site-header__nav" aria-label="Navegación principal">
+      <ul class="site-header__list">
+        {navigation.map((item) => {
+          const isActive = pathname === item.href;
+          return (
+            <li>
+              <a
+                href={item.href}
+                class:list={[
+                  "site-header__link",
+                  isActive && "site-header__link--active"
+                ]}
+                aria-current={isActive ? "page" : undefined}
+              >
+                {item.label}
+              </a>
+            </li>
+          );
+        })}
+      </ul>
+    </nav>
+
+    <button
+      class="site-header__toggle"
+      type="button"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+      aria-label="Abrir menú"
+      data-menu-toggle
+    >
+      <span class="site-header__toggle-icon"></span>
+    </button>
+  </div>
+
+  <nav
+    id="mobile-menu"
+    class="site-mobile-nav"
+    aria-label="Navegación móvil"
+    hidden
+    data-mobile-menu
+  >
+    <div class="site-shell">
+      <ul class="site-mobile-nav__list">
+        {navigation.map((item) => {
+          const isActive = pathname === item.href;
+          return (
+            <li class="site-mobile-nav__item">
+              <a
+                href={item.href}
+                class="site-mobile-nav__link"
+                aria-current={isActive ? "page" : undefined}
+              >
+                {item.label}
+              </a>
+            </li>
+          );
+        })}
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<script>
+  const toggleButton = document.querySelector(
+    "[data-menu-toggle]"
+  ) as HTMLButtonElement | null;
+
+  const mobileMenu = document.querySelector(
+    "[data-mobile-menu]"
+  ) as HTMLElement | null;
+
+  if (toggleButton && mobileMenu) {
+    toggleButton.addEventListener("click", () => {
+      const expanded = toggleButton.getAttribute("aria-expanded") === "true";
+      toggleButton.setAttribute("aria-expanded", String(!expanded));
+      mobileMenu.hidden = expanded;
+    });
+  }
+</script>

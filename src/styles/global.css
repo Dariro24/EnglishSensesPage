@@ -1,0 +1,164 @@
+@import "tailwindcss";
+@import "./header.css";
+@import "./pages.css";
+@import "./footer.css";
+@import "./sections.css";
+@import "./floating-whatsapp.css";
+
+:root {
+  --color-primary: #004aad;
+  --color-accent: #f18700;
+  --color-background: #efefef;
+  --color-surface: #ffffff;
+  --color-text: #111827;
+  --color-text-soft: #4b5563;
+  --color-border: rgba(0, 74, 173, 0.14);
+
+  --font-sans: "Hanken Grotesk", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+
+  --fs-title-desktop: 42px;
+  --fs-title-tablet: 34px;
+  --fs-title-mobile: 28px;
+
+  --fs-text-desktop: 18px;
+  --fs-text-tablet: 17px;
+  --fs-text-mobile: 16px;
+
+  --fs-subtitle-desktop: 14px;
+  --fs-subtitle-mobile: 13px;
+
+  --lh-body: 1.4;
+  --lh-list: 1.7;
+
+  --container-max: 1240px;
+  --container-padding-desktop: 24px;
+  --container-padding-tablet: 20px;
+  --container-padding-mobile: 16px;
+
+  --header-height-desktop: 64px;
+  --header-height-tablet: 58px;
+  --header-height-mobile: 52px;
+
+  --bullet-icon-url: url("/media/shared/icons/bullet-check.png");
+}
+
+@font-face {
+  font-family: "Hanken Grotesk";
+  src: url("/fonts/HankenGrotesk-VariableFont_wght.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Hanken Grotesk";
+  src: url("/fonts/HankenGrotesk-Italic-VariableFont_wght.ttf") format("truetype");
+  font-style: italic;
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: var(--font-sans);
+  background: var(--color-background);
+  color: var(--color-text);
+  scroll-behavior: smooth;
+  scroll-snap-type: y proximity;
+  scroll-padding-top: calc(var(--header-height-desktop) + 12px);
+}
+
+body {
+  margin: 0;
+  background: var(--color-background);
+  color: var(--color-text);
+  overflow-x: hidden;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+.site-shell {
+  width: min(100%, var(--container-max));
+  margin-inline: auto;
+  padding-inline: var(--container-padding-desktop);
+}
+
+.site-app {
+  min-height: 100vh;
+  background: var(--color-surface);
+}
+
+.page-wrap {
+  min-height: calc(100vh - var(--header-height-desktop));
+  background: var(--color-surface);
+}
+
+.curso-hero__list li::before,
+.curso-final__list li::before,
+.servicio-card__list li::before,
+.test-hero__list li::before,
+.test-level-group__list li::before,
+.test-benefits-final__list li::before,
+.info-section__list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 4px;
+  width: 18px;
+  height: 18px;
+  background-image: var(--bullet-icon-url);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+@media (max-width: 1199px) {
+  .site-shell {
+    padding-inline: var(--container-padding-tablet);
+  }
+}
+
+@media (max-width: 991px) {
+  html {
+    scroll-padding-top: calc(var(--header-height-tablet) + 12px);
+  }
+
+  .page-wrap {
+    min-height: calc(100vh - var(--header-height-tablet));
+  }
+}
+
+@media (max-width: 767px) {
+  html {
+    scroll-padding-top: calc(var(--header-height-mobile) + 12px);
+  }
+
+  .site-shell {
+    padding-inline: var(--container-padding-mobile);
+  }
+
+  .page-wrap {
+    min-height: calc(100vh - var(--header-height-mobile));
+  }
+}

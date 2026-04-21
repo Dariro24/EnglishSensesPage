@@ -1,0 +1,31 @@
+---
+import siteContent from "../config/site.json";
+
+const whatsappLink = siteContent.links.whatsapp;
+---
+
+<a
+  href={whatsappLink}
+  class="floating-whatsapp"
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="Contactar por WhatsApp"
+>
+  <svg
+    class="floating-whatsapp__icon"
+    viewBox="0 0 24 24"
+    aria-hidden="true"
+  >
+    <path
+      d="M12 3.2a8.8 8.8 0 0 0-7.48 13.43L3.5 20.5l4-.94A8.8 8.8 0 1 0 12 3.2Z"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M9.2 8.9c.2-.4.4-.4.6-.4h.5c.2 0 .4 0 .5.3l.8 1.9c.1.2.1.4 0 .6l-.6.8c-.1.2-.1.3 0 .4.4.8 1 1.5 1.8 2 .2.1.3.1.4 0l.9-.6c.2-.1.4-.1.6 0l1.8.8c.3.1.3.3.3.5v.5c0 .2 0 .4-.4.6-.4.2-1 .4-1.7.2-1.1-.3-2.4-1.1-3.6-2.3-1.1-1.1-1.9-2.3-2.2-3.4-.2-.8 0-1.4.3-1.9Z"
+      fill="currentColor"
+    />
+  </svg>
+</a>

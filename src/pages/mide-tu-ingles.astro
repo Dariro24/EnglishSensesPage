@@ -1,0 +1,235 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import Footer from "../components/Footer.astro";
+import NextSectionButton from "../components/NextSectionButton.astro";
+import mideTuInglesContent from "../config/pages/mide-tu-ingles.json";
+import "../styles/mide-tu-ingles.css";
+
+const { hero, levelButtons, levelsA, levelsB, benefits } = mideTuInglesContent;
+---
+
+<MainLayout title="Mide tu inglés" showFooter={false}>
+  <section id="mide-tu-ingles-hero" class="test-section test-section--hero">
+    <div class="site-shell test-hero">
+      <div class="test-hero__content">
+        <h1 class="test-hero__title">
+          {hero.title.split("\n").map((line) => (
+            <>
+              {line}
+              <br />
+            </>
+          ))}
+        </h1>
+
+        <p class="test-hero__intro">{hero.intro}</p>
+
+        <h2 class="test-hero__subtitle">{hero.subtitle}</h2>
+
+        <ul class="test-hero__list">
+          {hero.bullets.map((item) => (
+            <li>{item}</li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="test-hero__media">
+        <img
+          src={hero.image}
+          alt={hero.imageAlt}
+          class="test-hero__image"
+          loading="eager"
+          decoding="async"
+          fetchpriority="high"
+        />
+      </div>
+    </div>
+
+    <div class="test-section__next">
+      <NextSectionButton target={`#${levelsA.id}`} />
+    </div>
+  </section>
+
+  <section id={levelsA.id} class="test-section test-section--levels-a">
+    <div class="site-shell test-levels-a">
+      <div class="test-levels-a__left">
+        <h2 class="test-levels-a__title">
+          {levelsA.title.split("\n").map((line) => (
+            <>
+              {line}
+              <br />
+            </>
+          ))}
+        </h2>
+
+        <p class="test-levels-a__intro">{levelsA.intro}</p>
+
+        <p class="test-levels-a__selector-text">{levelsA.selectorText}</p>
+
+        <div class="test-level-buttons test-level-buttons--vertical">
+          {levelButtons.map((button) => (
+            <a
+              href={button.href.trim()}
+              class="test-level-button"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {button.label}
+            </a>
+          ))}
+        </div>
+      </div>
+
+      <div class="test-levels-a__right">
+        <h2 class="test-levels-a__group-title">{levelsA.groupTitle}</h2>
+
+        {levelsA.groups.map((group) => (
+          <div class="test-level-group">
+            <h3 class="test-level-group__heading">{group.heading}</h3>
+            <ul class="test-level-group__list">
+              {group.items.map((item) => (
+                <li>{item}</li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <div class="test-section__next">
+      <NextSectionButton target={`#${levelsB.id}`} />
+    </div>
+  </section>
+
+  <section id={levelsB.id} class="test-section test-section--levels-b">
+    <div class="site-shell test-levels-b">
+      <div class="test-levels-b__top">
+        <h2 class="test-levels-b__title">{levelsB.title}</h2>
+        <p class="test-levels-b__intro">{levelsB.intro}</p>
+      </div>
+
+      <div class="test-levels-b__grid">
+        {levelsB.groups.map((group) => (
+          <div class="test-level-group">
+            <h3 class="test-level-group__heading">{group.heading}</h3>
+            <ul class="test-level-group__list">
+              {group.items.map((item) => (
+                <li>{item}</li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+
+      <div class="test-levels-b__bottom">
+        <p class="test-levels-b__selector-text">{levelsB.selectorText}</p>
+
+        <div class="test-level-buttons test-level-buttons--horizontal">
+          {levelButtons.map((button) => (
+            <a
+              href={button.href.trim()}
+              class="test-level-button"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {button.label}
+            </a>
+          ))}
+        </div>
+
+        <p class="test-levels-b__cta-text">{levelsB.ctaText}</p>
+        <p class="test-levels-b__note">{levelsB.note}</p>
+      </div>
+    </div>
+
+    <div class="test-section__next">
+      <NextSectionButton target={`#${benefits.id}`} />
+    </div>
+  </section>
+
+  <section id={benefits.id} class="test-section test-section--benefits-final">
+    <div class="site-shell test-benefits-final__shell">
+      <div class="test-benefits-final">
+        <div class="test-benefits-final__left">
+          <img
+            src={benefits.image}
+            alt={benefits.imageAlt}
+            class="test-benefits-final__image"
+            loading="lazy"
+            decoding="async"
+          />
+
+          <p class="test-benefits-final__selector-text">{benefits.selectorText}</p>
+
+          <div class="test-level-buttons test-level-buttons--horizontal">
+            {levelButtons.map((button) => (
+              <a
+                href={button.href.trim()}
+                class="test-level-button"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {button.label}
+              </a>
+            ))}
+          </div>
+        </div>
+
+        <div class="test-benefits-final__right">
+          <h2 class="test-benefits-final__title">
+            {benefits.title.split("\n").map((line) => (
+              <>
+                {line}
+                <br />
+              </>
+            ))}
+          </h2>
+
+          <ul class="test-benefits-final__list">
+            {benefits.bullets.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="test-section__footer">
+      <Footer />
+    </div>
+  </section>
+
+  <script>
+    const getHeaderOffset = (): number => {
+      const header = document.querySelector(".site-header") as HTMLElement | null;
+      if (!header) return 0;
+      return header.getBoundingClientRect().height + 10;
+    };
+
+    const scrollToWithOffset = (selector: string): void => {
+      const target = document.querySelector(selector) as HTMLElement | null;
+      if (!target) return;
+
+      const top =
+        window.scrollY +
+        target.getBoundingClientRect().top -
+        getHeaderOffset();
+
+      window.scrollTo({
+        top,
+        behavior: "smooth"
+      });
+    };
+
+    const nextButtons = document.querySelectorAll(
+      "[data-next-target]"
+    ) as NodeListOf<HTMLElement>;
+
+    nextButtons.forEach((button: HTMLElement) => {
+      button.addEventListener("click", () => {
+        const targetSelector = button.getAttribute("data-next-target");
+        if (!targetSelector) return;
+        scrollToWithOffset(targetSelector);
+      });
+    });
+  </script>
+</MainLayout>

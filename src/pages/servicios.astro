@@ -1,0 +1,214 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import Footer from "../components/Footer.astro";
+import NextSectionButton from "../components/NextSectionButton.astro";
+import serviciosContent from "../config/pages/servicios.json";
+import "../styles/servicios.css";
+
+const { hero, sections, links: serviciosLinks } = serviciosContent;
+
+const tutorias = sections[0];
+const asesorias = sections[1];
+const mejorServicio = sections[2];
+const calendarioLink = serviciosLinks.Calendario;
+---
+
+<MainLayout title="Servicios" showFooter={false}>
+  <section id="servicios-hero" class="servicio-section servicio-section--hero">
+    <div class="site-shell servicio-hero">
+      <div class="servicio-hero__title-wrap">
+        <h1 class="servicio-hero__title">
+          {hero.title.split("\n").map((line) => (
+            <>
+              {line}
+              <br />
+            </>
+          ))}
+        </h1>
+      </div>
+
+      <div class="servicio-hero__content">
+        <p class="servicio-hero__description">{hero.description}</p>
+
+        <div class="servicio-hero__image-wrap">
+          <img
+            src={hero.image}
+            alt={hero.imageAlt}
+            class="servicio-hero__image"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div class="servicio-section__next">
+      <NextSectionButton target={`#${tutorias.id}`} />
+    </div>
+  </section>
+
+  <section id={tutorias.id} class="servicio-section servicio-section--content">
+    <div class="site-shell servicio-card servicio-card--left-media">
+      <div class="servicio-card__media-block">
+        <img
+          src={tutorias.image}
+          alt={tutorias.imageAlt}
+          class="servicio-card__image"
+        />
+
+        <p class="servicio-card__promo">{tutorias.ctaText}</p>
+
+        <a href={calendarioLink} class="primary-cta servicio-card__cta" target="_blank" rel="noopener noreferrer">
+          {tutorias.ctaLabel}
+        </a>
+
+        <p class="servicio-card__note">
+          {tutorias.note.split("\n").map((line) => (
+            <>
+              {line}
+              <br />
+            </>
+          ))}
+        </p>
+      </div>
+
+      <div class="servicio-card__content">
+        <h2 class="servicio-card__title">{tutorias.title}</h2>
+
+        <ul class="servicio-card__list">
+          {tutorias.bullets.map((item) => (
+            <li>{item}</li>
+          ))}
+        </ul>
+      </div>
+    </div>
+
+    <div class="servicio-section__next">
+      <NextSectionButton target={`#${asesorias.id}`} />
+    </div>
+  </section>
+
+  <section id={asesorias.id} class="servicio-section servicio-section--content">
+    <div class="site-shell servicio-card servicio-card--right-media">
+      <div class="servicio-card__content">
+        <h2 class="servicio-card__title">{asesorias.title}</h2>
+
+        <ul class="servicio-card__list">
+          {asesorias.bullets.map((item) => (
+            <li>{item}</li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="servicio-card__media-block">
+        <img
+          src={asesorias.image}
+          alt={asesorias.imageAlt}
+          class="servicio-card__image"
+        />
+
+        <p class="servicio-card__promo">{asesorias.ctaText}</p>
+
+        <a href={calendarioLink} class="primary-cta servicio-card__cta" target="_blank" rel="noopener noreferrer">
+          {asesorias.ctaLabel}
+        </a>
+
+        <p class="servicio-card__note">
+          {asesorias.note.split("\n").map((line) => (
+            <>
+              {line}
+              <br />
+            </>
+          ))}
+        </p>
+      </div>
+    </div>
+
+    <div class="servicio-section__next">
+      <NextSectionButton target={`#${mejorServicio.id}`} />
+    </div>
+  </section>
+
+  <section id={mejorServicio.id} class="servicio-section servicio-section--final">
+    <div class="site-shell servicio-final__shell">
+      <div class="servicio-final">
+        <div class="servicio-final__media-block">
+          <img
+            src={mejorServicio.image}
+            alt={mejorServicio.imageAlt}
+            class="servicio-final__image"
+          />
+
+          <p class="servicio-card__promo">{mejorServicio.ctaText}</p>
+
+          <a href={calendarioLink} class="primary-cta servicio-card__cta" target="_blank" rel="noopener noreferrer">
+            {mejorServicio.ctaLabel}
+          </a>
+
+          <p class="servicio-card__note">
+            {mejorServicio.note.split("\n").map((line) => (
+              <>
+                {line}
+                <br />
+              </>
+            ))}
+          </p>
+        </div>
+
+        <div class="servicio-final__content">
+          <h2 class="servicio-final__title">
+            {mejorServicio.title.split("\n").map((line) => (
+              <>
+                {line}
+                <br />
+              </>
+            ))}
+          </h2>
+
+          <ul class="servicio-card__list servicio-card__list--final">
+            {mejorServicio.bullets.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="servicio-section__footer">
+      <Footer />
+    </div>
+  </section>
+
+  <script>
+    const getHeaderOffset = (): number => {
+      const header = document.querySelector(".site-header") as HTMLElement | null;
+      if (!header) return 0;
+      return header.getBoundingClientRect().height + 10;
+    };
+
+    const scrollToWithOffset = (selector: string): void => {
+      const target = document.querySelector(selector) as HTMLElement | null;
+      if (!target) return;
+
+      const top =
+        window.scrollY +
+        target.getBoundingClientRect().top -
+        getHeaderOffset();
+
+      window.scrollTo({
+        top,
+        behavior: "smooth"
+      });
+    };
+
+    const nextButtons = document.querySelectorAll(
+      "[data-next-target]"
+    ) as NodeListOf<HTMLElement>;
+
+    nextButtons.forEach((button: HTMLElement) => {
+      button.addEventListener("click", () => {
+        const targetSelector = button.getAttribute("data-next-target");
+        if (!targetSelector) return;
+        scrollToWithOffset(targetSelector);
+      });
+    });
+  </script>
+</MainLayout>

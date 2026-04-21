@@ -1,0 +1,43 @@
+{
+  "hero": {
+    "title": "Curso Giving Tools",
+    "lead": "Aprende inglés con confianza y fluidez.",
+    "bullets": [
+      "Enfoque conversacional: Pierde el miedo a hablar inglés con nuestra metodología basada en la práctica real.",
+      "Clases en vivo: Interactúa en tiempo real con tutores y compañeros en un ambiente dinámico.",
+      "Aprendizaje integral: Mejora tus habilidades en speaking, listening, reading y writing, con recursos innovadores.",
+      "Metodología única: Immersion Day by Day para integrar el inglés en tu vida cotidiana y Feedback Senses para mejorar con retroalimentación efectiva.",
+      "Resultados reales: Te guiamos para que alcances autonomía en el idioma y te comuniques con seguridad en cualquier contexto."
+    ],
+    "closing": "¡Tu camino hacia el bilingüismo comienza aquí! Escríbenos y únete a nuestra comunidad.",
+    "ctaLabel": "Inscríbete",
+    "ctaText": "Haz tu solicitud por aquí y recibe un 10% off durante 2 meses."
+  },
+  "sections": [
+    {
+      "id": "para-quien-es",
+      "title": "Para quién es este\ncurso",
+      "paragraphs": [
+        "Personas de todas las edades, desde preadolescentes hasta profesionales, que buscan mejorar su inglés para oportunidades laborales o personales.",
+        "Para todos aquellos que han intentado aprender inglés antes sin éxito y buscan un método claro y sin complicaciones."
+      ],
+      "image": "/media/cursos/giving-tools/target-audience.gif",
+      "imageAlt": "Ilustración para quién es este curso"
+    },
+    {
+      "id": "modalidad-horarios",
+      "title": "Modalidad y\nhorarios",
+      "bullets": [
+        "Frecuencia: 3 clases sincrónicas por semana + clases asincrónicas extras de apoyo.",
+        "Duración: 1 hora por clase.",
+        "Grabaciones disponibles en caso de inasistencia.",
+        "Modalidad: Clases 100% en vivo a través de nuestro entorno virtual."
+      ],
+      "image": "/media/cursos/giving-tools/schedule.gif",
+      "imageAlt": "Ilustración de modalidad y horarios",
+      "ctaLabel": "Inscríbete",
+      "ctaText": "Haz tu solicitud por aquí y recibe un 10% off durante 2 meses.",
+      "note": "Si no te gustan las clases, aplicamos políticas de reembolso."
+    }
+  ]
+}

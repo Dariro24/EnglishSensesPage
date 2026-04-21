@@ -1,0 +1,54 @@
+{
+  "hero": {
+    "title": "Solucionamos tus\nnecesidades\nbiligues",
+    "description": "En English Senses, ofrecemos más que solo cursos de inglés. Contamos con servicios diseñados para potenciar tu aprendizaje y adaptarnos a tus necesidades específicas.",
+    "image": "/media/servicios/rocket.gif",
+    "imageAlt": "Ilustración de servicios"
+  },
+  "sections": [
+    {
+      "id": "tutorias",
+      "title": "Tutorías",
+      "bullets": [
+        "Clases uno a uno, diseñadas para estudiantes que buscan una experiencia de aprendizaje más personalizada.",
+        "Ideal para quienes desean avanzar a su propio ritmo y con un enfoque adaptado a sus necesidades.",
+        "Perfecto para estudiantes, profesionales y personas que desean reforzar su nivel de inglés de manera intensiva."
+      ],
+      "image": "/media/servicios/tutorias.gif",
+      "imageAlt": "Ilustración de tutorías",
+      "ctaLabel": "Agenda tu sesión",
+      "ctaText": "Haz tu solicitud por aquí y recibe un 20% off",
+      "note": "Ingresa, selecciona una hora disponible y listo.\nAplicamos políticas de reembolso."
+    },
+    {
+      "id": "asesorias",
+      "title": "Asesorías",
+      "bullets": [
+        "Si necesitas resolver dudas puntuales o mejorar en un área específica del idioma, nuestras asesorías personalizadas son ideales para ti.",
+        "¿Necesitas apoyo con tus tareas escolares o trabajos en inglés? Estamos aquí para ayudarte.",
+        "Sesiones flexibles y enfocadas en tus objetivos."
+      ],
+      "image": "/media/servicios/asesorias.gif",
+      "imageAlt": "Ilustración de asesorías",
+      "ctaLabel": "Agenda tu sesión",
+      "ctaText": "Haz tu solicitud por aquí y recibe un 20% off",
+      "note": "Ingresa, selecciona una hora disponible y listo.\nAplicamos políticas de reembolso."
+    },
+    {
+      "id": "mejor-servicio",
+      "title": "¿Cuál es el mejor\nservicio para Ti?",
+      "bullets": [
+        "Asesorías: Si necesitas ayuda con tareas y trabajos en inglés.",
+        "Tutorías: Si buscas clases personalizadas con un seguimiento constante."
+      ],
+      "image": "/media/servicios/megafono.gif",
+      "imageAlt": "Ilustración del mejor servicio",
+      "ctaLabel": "Agenda tu sesión",
+      "ctaText": "Haz tu solicitud por aquí y recibe un 20% off",
+      "note": "Ingresa, selecciona una hora disponible y listo.\nAplicamos políticas de reembolso."
+    }
+  ],
+  "links": {
+    "Calendario": "https://calendar.app.google/7JNZgqkizBW39xMH8"
+  }
+}

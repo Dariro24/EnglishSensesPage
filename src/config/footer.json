@@ -1,0 +1,30 @@
+{
+  "footer": {
+    "address": {
+      "title": "Barrio San Mateo",
+      "text": "Magangué, Bolívar - Colombia"
+    },
+    "email": {
+      "primary": "info@englishsenses.com",
+      "secondary": "jeanwilson@englishsenses.com"
+    },
+    "phone": {
+      "number": "(57) 300 598 6546",
+      "schedule": "Lunes - Viernes, 8 am - 6 pm"
+    },
+    "social": {
+      "youtube": "https://youtube.com",
+      "facebook": "https://facebook.com",
+      "instagram": "https://instagram.com",
+      "email": "mailto:info@englishsenses.com"
+    },
+    "copyright": {
+      "line1": "ENGLISH SENSES 2022 - TODOS LOS DERECHOS RESERVADOS",
+      "line2": "Sitio web implementado por"
+    },
+    "whatsapp": {
+      "label": "Contáctanos por WhatsApp",
+      "href": "https://wa.me/573005986546"
+    }
+  }
+}
