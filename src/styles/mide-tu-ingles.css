@@ -197,6 +197,10 @@
 
 /* NIVELES B */
 
+.test-section--levels-b .test-levels-b {
+  padding-top: 56px;
+}
+
 .test-levels-b {
   width: min(100%, 1140px);
   margin-inline: auto;
@@ -315,6 +319,10 @@
 }
 
 @media (max-width: 1199px) {
+  .test-section--levels-b .test-levels-b {
+    padding-top: 48px;
+  }
+
   .test-hero,
   .test-levels-a,
   .test-levels-b,
@@ -331,6 +339,10 @@
 }
 
 @media (max-width: 991px) {
+  .test-section--levels-b .test-levels-b {
+    padding-top: 36px;
+  }
+
   .test-hero,
   .test-levels-a,
   .test-levels-b__grid,
@@ -384,6 +396,10 @@
 }
 
 @media (max-width: 767px) {
+  .test-section--levels-b .test-levels-b {
+    padding-top: 24px;
+  }
+
   .test-hero__title,
   .test-levels-a__title,
   .test-levels-b__title,

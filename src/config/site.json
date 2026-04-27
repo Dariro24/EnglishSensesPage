@@ -1,7 +1,7 @@
 {
   "site": {
     "name": "English Senses",
-    "logo": "/media/shared/logo.png"
+    "logo": "/media/shared/logo.svg"
   },
   "navigation": [
     { "label": "Inicio", "href": "/" },

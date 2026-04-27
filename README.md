@@ -1,146 +1,88 @@
-# Astro + Tailwind Starter
+# English Senses Page
 
-Proyecto base para una landing sencilla, visual y escalable, pensado para usar:
+Sitio web institucional de **English Senses**, desarrollado con **Astro** y estilos personalizados organizados por páginas y secciones.  
+El proyecto está pensado para presentar la marca, sus cursos, servicios y prueba de nivel de inglés, con una estructura visual por secciones y navegación optimizada para escritorio y, posteriormente, para móviles.
 
-- Astro
-- Tailwind CSS
-- Componentes reutilizables
-- Un archivo JSON para centralizar links y textos
+---
 
-## 1) Requisitos previos
+## Descripción del proyecto
 
-Instala en tu equipo:
+Este sitio fue construido para mostrar la propuesta de valor de **English Senses** mediante una experiencia visual clara, moderna y editable.
 
-- **Node.js** versión LTS
-- **Visual Studio Code**
+Incluye las siguientes páginas principales:
 
-Extensiones recomendadas en VS Code:
+- **Inicio**
+- **Nosotros**
+- **Cursos**
+- **Servicios**
+- **Mide tu inglés**
+
+El contenido visual y textual está organizado para facilitar futuras modificaciones sin tener que reescribir toda la estructura del sitio.
+
+---
+
+## Tecnologías utilizadas
 
 - **Astro**
-- **Tailwind CSS IntelliSense**
+- **CSS modular por página**
+- **JSON para contenido editable**
+- **Vercel** para despliegue
+- **Vercel Speed Insights** para monitoreo de rendimiento
 
-## 2) Crear o abrir el proyecto
+---
 
-Si quieres crear un proyecto nuevo desde cero con el asistente oficial de Astro:
-
-```bash
-npm create astro@latest
-```
-
-Si vas a usar esta base que ya te entregué:
-
-1. Descomprime la carpeta.
-2. Ábrela en Visual Studio Code.
-3. Abre la terminal integrada en la raíz del proyecto.
-
-## 3) Instalar dependencias
-
-```bash
-npm install
-```
-
-## 4) Ejecutar en desarrollo
-
-```bash
-npm run dev
-```
-
-Luego abre en tu navegador la URL local que te muestre la terminal.
-
-## 5) Estructura del proyecto
+## Estructura general del proyecto
 
 ```text
-astro-tailwind-starter/
-├─ public/
-│  └─ media/
-├─ src/
-│  ├─ components/
-│  ├─ config/
-│  │  └─ site-content.json
-│  ├─ layouts/
-│  ├─ pages/
-│  └─ styles/
-├─ astro.config.mjs
-├─ package.json
-└─ README.md
-```
-
-## 6) Dónde cambiar los links y textos
-
-El archivo más importante para contenido editable es:
-
-```text
-src/config/site-content.json
-```
-
-Ahí puedes cambiar:
-
-- nombre del sitio
-- textos principales
-- textos de secciones
-- labels de botones
-- URLs de botones
-- rutas de imágenes y GIFs
-
-### Ejemplo
-
-```json
-"links": {
-  "principal": {
-    "label": "Botón principal",
-    "url": "https://example.com/principal"
-  }
-}
-```
-
-## 7) Dónde cambiar imágenes o GIFs
-
-Reemplaza los archivos dentro de:
-
-```text
-public/media/
-```
-
-Y luego actualiza sus rutas en:
-
-```text
-src/config/site-content.json
-```
-
-## 8) Build de producción
-
-```bash
-npm run build
-```
-
-Para previsualizar el resultado final:
-
-```bash
-npm run preview
-```
-
-## 9) Idea de crecimiento futuro
-
-Esta base ya queda preparada para crecer con facilidad:
-
-- nuevas secciones reutilizando componentes
-- configuración separada del contenido
-- integración futura con CMS
-- SEO más completo
-- formularios
-- analítica
-- internacionalización
-
-## 10) Siguiente recomendación
-
-Antes de seguir con desarrollo visual, define una maqueta con:
-
-- versión móvil
-- versión escritorio
-- tipografía
-- paleta de colores
-- espaciados
-- imágenes finales
-- textos definitivos
-
-Con esa maqueta, esta base se adapta rápido sin rehacer la arquitectura.
+.
+├── public/
+│   ├── fonts/
+│   └── media/
+│       ├── home/
+│       ├── nosotros/
+│       ├── cursos/
+│       ├── servicios/
+│       ├── mide-tu-ingles/
+│       └── shared/
+│
+├── src/
+│   ├── components/
+│   │   ├── Footer.astro
+│   │   ├── Header.astro
+│   │   ├── FloatingWhatsApp.astro
+│   │   ├── NextSectionButton.astro
+│   │   └── SectionSheet.astro
+│   │
+│   ├── config/
+│   │   └── pages/
+│   │       ├── home.json
+│   │       ├── nosotros.json
+│   │       ├── cursos.json
+│   │       ├── servicios.json
+│   │       └── mide-tu-ingles.json
+│   │
+│   ├── layouts/
+│   │   └── MainLayout.astro
+│   │
+│   ├── pages/
+│   │   ├── index.astro
+│   │   ├── nosotros.astro
+│   │   ├── cursos.astro
+│   │   ├── servicios.astro
+│   │   └── mide-tu-ingles.astro
+│   │
+│   └── styles/
+│       ├── global.css
+│       ├── header.css
+│       ├── footer.css
+│       ├── sections.css
+│       ├── home.css
+│       ├── nosotros.css
+│       ├── cursos.css
+│       ├── servicios.css
+│       ├── mide-tu-ingles.css
+│       └── floating-whatsapp.css
+│
+├── astro.config.mjs
+├── package.json
+└── README.md

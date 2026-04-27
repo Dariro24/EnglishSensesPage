@@ -1,0 +1,94 @@
+{
+  "home": {
+    "messageImage": "/media/home/hero/mensaje-home.webp",
+    "messageAlt": "Inglés fácil, efectivo y a tu medida desde cualquier lugar de Colombia",
+    "description": "Clases en vivo con profesores cualificados, material interactivo y seguimiento personalizado.",
+    "primaryButtonLabel": "Inscríbete Ahora",
+    "heroCharacter": "/media/home/hero/hero-personaje.webp",
+    "arrowGif": "/media/home/hero/arrow.gif"
+  },
+  "sections": [
+    {
+      "id": "rompe-barreras",
+      "title": "Rompe barreras\ngeográficas",
+      "description": "Tu camino al bilingüismo comienza aquí, sin límites ni fronteras.",
+      "bullets": [
+        "Aprende inglés sin importar dónde estés en Colombia.",
+        "Conéctate desde casa y accede a clases en vivo.",
+        "Horarios flexibles que se adaptan a tu rutina."
+      ],
+      "image": "/media/home/sections/01-rompe-barreras.gif",
+      "imageAlt": "Ilustración de aprendizaje a distancia",
+      "imagePosition": "left"
+    },
+    {
+      "id": "aprendizaje-semi-personalizado",
+      "title": "Aprendizaje semi\npersonalizado",
+      "description": "En English Senses, apostamos por el aprendizaje en grupos reducidos para garantizar una experiencia personalizada, efectiva y de calidad. ¡Tu progreso es nuestra prioridad!",
+      "bullets": [
+        "Clases sincrónicas con grupos reducidos (5-7 estudiantes).",
+        "A tu ritmo, con apoyo de nuestros tutores.",
+        "Feedback constante y seguimiento personalizado para que avances con confianza."
+      ],
+      "image": "/media/home/sections/02-aprendizaje-semi-personalizado.gif",
+      "imageAlt": "Ilustración de grupos reducidos",
+      "imagePosition": "right"
+    },
+    {
+      "id": "entorno-virtual",
+      "title": "Entorno virtual que\nte impulsa",
+      "description": "Estudia con la comodidad del aprendizaje digital sin perder la experiencia real del aula.",
+      "bullets": [
+        "Integraciones intuitivas y accesibles desde cualquier dispositivo.",
+        "Las clases quedan grabadas para que nunca pierdas una lección.",
+        "Interacción con tus profesores y compañeros en tiempo real.",
+        "Salón virtual, foros colaborativos, chat internos y más."
+      ],
+      "image": "/media/home/sections/03-entorno-virtual.gif",
+      "imageAlt": "Ilustración de entorno virtual",
+      "imagePosition": "left"
+    },
+    {
+      "id": "que-nos-diferencia",
+      "title": "¿Qué nos diferencia?",
+      "description": "No solo te enseñamos inglés, es el camino hacia nuevas oportunidades y una experiencia que transforma tu manera de aprender el idioma universal.",
+      "bullets": [
+        "Consta de 3 módulos, A1 (Beginner) a B2 (Upper Intermediate).",
+        "Inglés para la vida real, no solo teoría.",
+        "Acompañamiento constante para tu progreso.",
+        "Clases dinámicas donde hablas desde el primer día.",
+        "Herramientas efectivas para lograr tus metas.",
+        "Sistema de monitoreo que te mantiene conectado."
+      ],
+      "image": "/media/home/sections/04-que-nos-diferencia.gif",
+      "imageAlt": "Ilustración de crecimiento y diferenciación",
+      "imagePosition": "right"
+    },
+    {
+      "id": "experiencias",
+      "title": "Experiencias",
+      "description": "",
+      "bullets": [
+        "Calidad humana.",
+        "Estamos para ti.",
+        "El público nos aprueba."
+      ],
+      "image": "/media/home/sections/05-experiencias-left.webp",
+      "imageAlt": "Bitmoji con corazón",
+      "imageSecondary": "/media/home/sections/05-experiencias-right.webp",
+      "imageSecondaryAlt": "Ilustración de reseñas",
+      "imagePosition": "split"
+    },
+    {
+      "id": "aprende-sin-presiones",
+      "title": "Aprende sin presiones\ny a tu ritmo",
+      "description": "Si no te gustan las clases, aplicamos políticas de reembolso.",
+      "bullets": [],
+      "image": "/media/home/sections/06-aprende-sin-presiones-left.png",
+      "imageAlt": "Personaje bajo un reflector",
+      "imageSecondary": "/media/home/sections/06-aprende-sin-presiones-right.gif",
+      "imageSecondaryAlt": "Ilustración final",
+      "imagePosition": "final"
+    }
+  ]
+}
