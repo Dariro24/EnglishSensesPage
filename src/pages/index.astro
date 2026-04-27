@@ -22,6 +22,9 @@ const finalSection = sections[sections.length - 1];
           src={home.heroCharacter}
           alt="Personaje principal"
           class="home-hero__character"
+          loading="eager"
+          decoding="async"
+          fetchpriority="high"
         />
       </div>
 
@@ -30,6 +33,9 @@ const finalSection = sections[sections.length - 1];
           src={home.messageImage}
           alt={home.messageAlt}
           class="home-hero__message-image"
+          loading="eager"
+          decoding="async"
+          fetchpriority="high"
         />
       </div>
 
@@ -38,11 +44,13 @@ const finalSection = sections[sections.length - 1];
           src={home.arrowGif}
           alt=""
           class="home-hero__arrow-gif"
+          loading="eager"
+          decoding="async"
         />
       </div>
 
       <div class="home-hero__cta-wrap">
-        <a href={links.inscribeteAhora} class="primary-cta" target="_blank" rel="noopener noreferrer">
+        <a href={links.inscribeteAhora} class="primary-cta">
           {home.primaryButtonLabel}
         </a>
       </div>
@@ -97,6 +105,8 @@ const finalSection = sections[sections.length - 1];
             src={finalSection.image}
             alt={finalSection.imageAlt}
             class="info-section__image info-section__image--final-left"
+            loading="lazy"
+            decoding="async"
           />
         </div>
 
@@ -110,7 +120,7 @@ const finalSection = sections[sections.length - 1];
             ))}
           </h2>
 
-          <a href={links.inscribeteAhora} class="primary-cta" target="_blank" rel="noopener noreferrer">
+          <a href={links.inscribeteAhora} class="primary-cta">
             {home.primaryButtonLabel}
           </a>
 
@@ -122,6 +132,8 @@ const finalSection = sections[sections.length - 1];
             src={finalSection.imageSecondary}
             alt={finalSection.imageSecondaryAlt}
             class="info-section__image info-section__image--final-right"
+            loading="lazy"
+            decoding="async"
           />
         </div>
       </div>
