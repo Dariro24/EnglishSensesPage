@@ -1,0 +1,190 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import Footer from "../components/Footer.astro";
+
+const API_URL = "https://script.google.com/macros/s/AKfycbxTEk-816FWXaV5AapzBAHE-7SmU9mywdk4ddiuaXXk76NuaQhf0O264jaFQ_vIL-wW/exec";
+---
+
+<MainLayout title="englishsenses" showFooter={false}>
+  <main class="coupon-page">
+    <section class="coupon-section">
+      <div class="site-shell coupon-shell">
+        <h1 class="coupon-title">englishsenses</h1>
+
+        <p class="coupon-subtitle">
+          Redime tu cupón
+        </p>
+
+        <button id="btnTomarCupon" class="primary-cta coupon-button" type="button">
+          Ver mi cupón
+        </button>
+
+        <div id="couponResult" class="coupon-result"></div>
+      </div>
+    </section>
+
+    <Footer />
+  </main>
+
+  <script define:vars={{ API_URL }}>
+    const btnTomarCupon = document.getElementById("btnTomarCupon");
+    const couponResult = document.getElementById("couponResult");
+
+    const savedCoupon = sessionStorage.getItem("cuponAsignado");
+
+    if (savedCoupon) {
+      renderCoupon(JSON.parse(savedCoupon));
+      btnTomarCupon.disabled = true;
+      btnTomarCupon.textContent = "Cupón asignado";
+    }
+
+    btnTomarCupon.addEventListener("click", async () => {
+      btnTomarCupon.disabled = true;
+      btnTomarCupon.textContent = "Buscando cupón...";
+
+      couponResult.innerHTML = `<p>Validando cupón disponible...</p>`;
+
+      try {
+        const response = await fetch(API_URL, {
+          method: "POST",
+          body: JSON.stringify({
+            action: "tomar"
+          })
+        });
+
+        const result = await response.json();
+
+        if (!result.ok || !result.data) {
+          couponResult.innerHTML = `
+            <p>No hay cupones disponibles en este momento.</p>
+          `;
+
+          btnTomarCupon.textContent = "Sin cupones disponibles";
+          return;
+        }
+
+        sessionStorage.setItem("cuponAsignado", JSON.stringify(result.data));
+
+        renderCoupon(result.data);
+
+        btnTomarCupon.textContent = "Cupón asignado";
+
+      } catch (error) {
+        console.error(error);
+
+        couponResult.innerHTML = `
+          <p>No pudimos cargar el cupón. Intenta nuevamente.</p>
+        `;
+
+        btnTomarCupon.disabled = false;
+        btnTomarCupon.textContent = "Ver mi cupón";
+      }
+    });
+
+    function renderCoupon(cupon) {
+      couponResult.innerHTML = `
+        <div class="coupon-card">
+          <p class="coupon-label">Tu código es:</p>
+
+          <h2 class="coupon-code">
+            ${escapeHTML(cupon.codigo)}
+          </h2>
+
+          <p class="coupon-whatsapp">
+            Para redimir este cupón, escríbenos por WhatsApp y envíanos el código asignado.
+          </p>
+        </div>
+      `;
+    }
+
+    function escapeHTML(value) {
+      const div = document.createElement("div");
+      div.textContent = value || "";
+      return div.innerHTML;
+    }
+  </script>
+
+  <style>
+    :global(.site-header) {
+      display: none !important;
+    }
+
+    :global(body) {
+      margin: 0;
+      padding: 0;
+    }
+
+    .coupon-page {
+      min-height: 100svh;
+      display: flex;
+      flex-direction: column;
+      background: var(--color-background, #efefef);
+    }
+
+    .coupon-section {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 3rem 1.5rem;
+    }
+
+    .coupon-shell {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .coupon-title {
+      margin: 0;
+      font-size: clamp(3rem, 8vw, 6rem);
+      line-height: 1;
+    }
+
+    .coupon-subtitle {
+      margin: 1rem 0 2rem;
+      font-size: clamp(1.4rem, 3vw, 2.2rem);
+      line-height: 1.2;
+    }
+
+    .coupon-button {
+      border: 0;
+      cursor: pointer;
+    }
+
+    .coupon-button:disabled {
+      cursor: not-allowed;
+      opacity: 0.8;
+    }
+
+    .coupon-result {
+      margin-top: 2rem;
+      max-width: 560px;
+    }
+
+    .coupon-card {
+      text-align: center;
+    }
+
+    .coupon-label {
+      margin: 0 0 0.5rem;
+    }
+
+    .coupon-code {
+      margin: 0.5rem 0 1rem;
+      font-size: clamp(2.5rem, 7vw, 5rem);
+      line-height: 1;
+    }
+
+    .coupon-whatsapp {
+      margin: 1rem 0 0;
+    }
+
+    :global(footer),
+    :global(.site-footer) {
+      margin-bottom: 0 !important;
+    }
+  </style>
+</MainLayout>
