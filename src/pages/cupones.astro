@@ -1,100 +1,335 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
 import Footer from "../components/Footer.astro";
+import FloatingWhatsApp from "../components/FloatingWhatsApp.astro";
+import "../styles/cupones.css";
+import couponContent from "../config/pages/cupones.json";
 
-const API_URL = "https://script.google.com/macros/s/AKfycbxTEk-816FWXaV5AapzBAHE-7SmU9mywdk4ddiuaXXk76NuaQhf0O264jaFQ_vIL-wW/exec";
+const COUPON_CONFIG = couponContent;
 ---
 
-<MainLayout title="englishsenses" showFooter={false}>
+<MainLayout title="English Senses" showFooter={false}>
   <main class="coupon-page">
     <section class="coupon-section">
-      <div class="site-shell coupon-shell">
-        <h1 class="coupon-title">englishsenses</h1>
-
-        <p class="coupon-subtitle">
-          Redime tu cupón
-        </p>
-
-        <button id="btnTomarCupon" class="primary-cta coupon-button" type="button">
-          Ver mi cupón
-        </button>
-
-        <div id="couponResult" class="coupon-result"></div>
-      </div>
+      <div id="couponResult" class="coupon-result"></div>
     </section>
 
     <Footer />
+
+    <FloatingWhatsApp
+      href={COUPON_CONFIG.whatsapp.href}
+      label={COUPON_CONFIG.whatsapp.label}
+    />
   </main>
 
-  <script define:vars={{ API_URL }}>
-    const btnTomarCupon = document.getElementById("btnTomarCupon");
+  <script define:vars={{ COUPON_CONFIG }}>
     const couponResult = document.getElementById("couponResult");
 
-    const savedCoupon = sessionStorage.getItem("cuponAsignado");
+    const params = new URLSearchParams(window.location.search);
+
+    const lugarConvenio =
+      params.get("lugar") ||
+      params.get("convenio") ||
+      params.get("lugar_convenio") ||
+      "";
+
+    const tipoParam = params.get("tipo") || "";
+
+    const savedKey = `cuponAsignado:${slug(lugarConvenio)}:${slug(tipoParam)}`;
+    const savedCoupon = sessionStorage.getItem(savedKey);
 
     if (savedCoupon) {
       renderCoupon(JSON.parse(savedCoupon));
-      btnTomarCupon.disabled = true;
-      btnTomarCupon.textContent = "Cupón asignado";
+    } else {
+      renderInitialCoupon();
     }
 
-    btnTomarCupon.addEventListener("click", async () => {
-      btnTomarCupon.disabled = true;
-      btnTomarCupon.textContent = "Buscando cupón...";
+    couponResult.addEventListener("click", async (event) => {
+      const target = event.target;
 
-      couponResult.innerHTML = `<p>Validando cupón disponible...</p>`;
+      if (!(target instanceof Element)) return;
+
+      const button = target.closest("#btnTomarCupon");
+
+      if (!button) return;
+
+      button.disabled = true;
+      renderLoadingCoupon();
 
       try {
-        const response = await fetch(API_URL, {
+        const response = await fetch(COUPON_CONFIG.apiUrl, {
           method: "POST",
+          headers: {
+            "Content-Type": "text/plain;charset=utf-8"
+          },
           body: JSON.stringify({
-            action: "tomar"
+            action: "tomar",
+            lugar_convenio: lugarConvenio,
+            tipo: tipoParam
           })
         });
 
         const result = await response.json();
 
         if (!result.ok || !result.data) {
-          couponResult.innerHTML = `
-            <p>No hay cupones disponibles en este momento.</p>
-          `;
-
-          btnTomarCupon.textContent = "Sin cupones disponibles";
+          renderSoldOut();
           return;
         }
 
-        sessionStorage.setItem("cuponAsignado", JSON.stringify(result.data));
-
+        sessionStorage.setItem(savedKey, JSON.stringify(result.data));
         renderCoupon(result.data);
-
-        btnTomarCupon.textContent = "Cupón asignado";
-
       } catch (error) {
         console.error(error);
-
-        couponResult.innerHTML = `
-          <p>No pudimos cargar el cupón. Intenta nuevamente.</p>
-        `;
-
-        btnTomarCupon.disabled = false;
-        btnTomarCupon.textContent = "Ver mi cupón";
+        renderErrorCoupon();
       }
     });
 
-    function renderCoupon(cupon) {
+    function renderInitialCoupon() {
+      const card = COUPON_CONFIG.initialCard;
+
       couponResult.innerHTML = `
-        <div class="coupon-card">
-          <p class="coupon-label">Tu código es:</p>
+        <article class="coupon-card coupon-card--initial">
+          <div class="coupon-card__top">
+            ${renderSplitLogo()}
+            ${renderMascot()}
 
-          <h2 class="coupon-code">
-            ${escapeHTML(cupon.codigo)}
-          </h2>
+            <h1 class="coupon-card__main-title">
+              ${escapeHTML(card.title)}
+            </h1>
 
-          <p class="coupon-whatsapp">
-            Para redimir este cupón, escríbenos por WhatsApp y envíanos el código asignado.
-          </p>
-        </div>
+            <p class="coupon-card__headline coupon-card__headline--initial">
+              ${escapeHTML(card.headline)}
+            </p>
+
+            <button id="btnTomarCupon" class="coupon-card__pill coupon-card__button" type="button">
+              ${escapeHTML(card.buttonLabel)}
+            </button>
+          </div>
+
+          <div class="coupon-card__bottom">
+            <div class="coupon-card__code coupon-card__code--barcode coupon-card__code--wide">
+              <span class="coupon-card__code-text">
+                ${escapeHTML(card.codeText)}
+              </span>
+            </div>
+
+            <div class="coupon-card__meta coupon-card__meta--center">
+              <span>${escapeHTML(card.transferText)}</span>
+            </div>
+
+            <p class="coupon-card__whatsapp-text">
+              ${escapeHTML(card.whatsappText)}
+            </p>
+
+            <p class="coupon-card__site">
+              ${escapeHTML(COUPON_CONFIG.website)}
+            </p>
+          </div>
+        </article>
       `;
+    }
+
+    function renderLoadingCoupon() {
+      const card = COUPON_CONFIG.loadingCard;
+
+      couponResult.innerHTML = `
+        <article class="coupon-card coupon-card--initial">
+          <div class="coupon-card__top">
+            ${renderSplitLogo()}
+            ${renderMascot()}
+
+            <h1 class="coupon-card__main-title">
+              ${escapeHTML(card.title)}
+            </h1>
+
+            <p class="coupon-card__headline coupon-card__headline--initial">
+              ${escapeHTML(card.headline)}
+            </p>
+
+            <div class="coupon-card__pill">
+              ${escapeHTML(card.pillText)}
+            </div>
+          </div>
+
+          <div class="coupon-card__bottom">
+            <div class="coupon-card__code coupon-card__code--barcode coupon-card__code--wide">
+              <span class="coupon-card__code-text">
+                ${escapeHTML(card.codeText)}
+              </span>
+            </div>
+
+            <p class="coupon-card__site">
+              ${escapeHTML(COUPON_CONFIG.website)}
+            </p>
+          </div>
+        </article>
+      `;
+    }
+
+    function renderCoupon(cupon) {
+      const template = getTemplateByTipo(cupon.tipo);
+      const card = COUPON_CONFIG.couponCard;
+
+      couponResult.innerHTML = `
+        <article class="coupon-card">
+          <div class="coupon-card__top">
+            ${renderSplitLogo()}
+            ${renderMascot()}
+
+            <h2 class="coupon-card__discount">
+              ${escapeHTML(cupon.descuento)} OFF
+            </h2>
+
+            <p class="coupon-card__headline">
+              ${escapeHTML(template.headline)}
+            </p>
+
+            <div class="coupon-card__pill">
+              ${escapeHTML(template.label)}
+            </div>
+          </div>
+
+          <div class="coupon-card__bottom">
+            <div class="coupon-card__barcode" aria-hidden="true"></div>
+
+            <div class="coupon-card__code">
+              ${escapeHTML(cupon.codigo)}
+            </div>
+
+            <div class="coupon-card__meta">
+              <span>${escapeHTML(card.validUntilText)} ${escapeHTML(cupon.vence)}</span>
+              <span>${escapeHTML(card.transferText)}</span>
+            </div>
+
+            <p class="coupon-card__whatsapp-text">
+              ${escapeHTML(card.whatsappText)}
+            </p>
+
+            <p class="coupon-card__site">
+              ${escapeHTML(COUPON_CONFIG.website)}
+            </p>
+          </div>
+        </article>
+      `;
+    }
+
+    function renderSoldOut() {
+      const card = COUPON_CONFIG.soldOutCard;
+
+      couponResult.innerHTML = `
+        <article class="coupon-card coupon-card--soldout">
+          <div class="coupon-card__top">
+            ${renderSplitLogo()}
+            ${renderMascot()}
+
+            <h2 class="coupon-card__soldout-title">
+              ${formatBreaks(card.title)}
+            </h2>
+
+            <div class="coupon-card__pill">
+              ${escapeHTML(card.pillText)}
+            </div>
+          </div>
+
+          <div class="coupon-card__bottom">
+            <div class="coupon-card__barcode" aria-hidden="true"></div>
+
+            <div class="coupon-card__code">
+              ${escapeHTML(card.codeText)}
+            </div>
+
+            <p class="coupon-card__site">
+              ${escapeHTML(COUPON_CONFIG.website)}
+            </p>
+          </div>
+        </article>
+      `;
+    }
+
+    function renderErrorCoupon() {
+      const card = COUPON_CONFIG.errorCard;
+
+      couponResult.innerHTML = `
+        <article class="coupon-card coupon-card--initial">
+          <div class="coupon-card__top">
+            ${renderSplitLogo()}
+            ${renderMascot()}
+
+            <h1 class="coupon-card__main-title">
+              ${escapeHTML(card.title)}
+            </h1>
+
+            <p class="coupon-card__headline coupon-card__headline--initial">
+              ${escapeHTML(card.headline)}
+            </p>
+
+            <button id="btnTomarCupon" class="coupon-card__pill coupon-card__button" type="button">
+              ${escapeHTML(card.buttonLabel)}
+            </button>
+          </div>
+
+          <div class="coupon-card__bottom">
+            <div class="coupon-card__code coupon-card__code--barcode coupon-card__code--wide">
+              <span class="coupon-card__code-text">
+                ${escapeHTML(card.codeText)}
+              </span>
+            </div>
+
+            <p class="coupon-card__site">
+              ${escapeHTML(COUPON_CONFIG.website)}
+            </p>
+          </div>
+        </article>
+      `;
+    }
+
+    function renderMascot() {
+      const mascot = COUPON_CONFIG.mascot;
+
+      if (!mascot?.src) return "";
+
+      return `
+        <img
+          src="${escapeHTML(mascot.src)}"
+          alt="${escapeHTML(mascot.alt || "")}"
+          class="coupon-card__mascot"
+          loading="lazy"
+        />
+      `;
+    }
+
+    function renderSplitLogo() {
+      const logo = COUPON_CONFIG.brandLogo;
+
+      if (!logo?.src) return "";
+
+      return `
+        <img
+          src="${escapeHTML(logo.src)}"
+          alt="${escapeHTML(logo.alt || "")}"
+          class="coupon-card__split-logo"
+          loading="lazy"
+        />
+      `;
+    }
+
+    function getTemplateByTipo(tipo) {
+      const key = slug(tipo);
+      return COUPON_CONFIG.templates[key] || COUPON_CONFIG.templates.default;
+    }
+
+    function slug(value) {
+      return String(value || "")
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .trim()
+        .toLowerCase()
+        .replace(/&/g, "y")
+        .replace(/[\/_]+/g, "-")
+        .replace(/\s+/g, "-")
+        .replace(/[^a-z0-9-]/g, "")
+        .replace(/-+/g, "-")
+        .replace(/^-|-$/g, "");
     }
 
     function escapeHTML(value) {
@@ -102,89 +337,11 @@ const API_URL = "https://script.google.com/macros/s/AKfycbxTEk-816FWXaV5AapzBAHE
       div.textContent = value || "";
       return div.innerHTML;
     }
+
+    function formatBreaks(value) {
+      return escapeHTML(value || "")
+        .replace(/&lt;br\s*\/?&gt;/gi, "<br />")
+        .replace(/\n/g, "<br />");
+    }
   </script>
-
-  <style>
-    :global(.site-header) {
-      display: none !important;
-    }
-
-    :global(body) {
-      margin: 0;
-      padding: 0;
-    }
-
-    .coupon-page {
-      min-height: 100svh;
-      display: flex;
-      flex-direction: column;
-      background: var(--color-background, #efefef);
-    }
-
-    .coupon-section {
-      flex: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 3rem 1.5rem;
-    }
-
-    .coupon-shell {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-    }
-
-    .coupon-title {
-      margin: 0;
-      font-size: clamp(3rem, 8vw, 6rem);
-      line-height: 1;
-    }
-
-    .coupon-subtitle {
-      margin: 1rem 0 2rem;
-      font-size: clamp(1.4rem, 3vw, 2.2rem);
-      line-height: 1.2;
-    }
-
-    .coupon-button {
-      border: 0;
-      cursor: pointer;
-    }
-
-    .coupon-button:disabled {
-      cursor: not-allowed;
-      opacity: 0.8;
-    }
-
-    .coupon-result {
-      margin-top: 2rem;
-      max-width: 560px;
-    }
-
-    .coupon-card {
-      text-align: center;
-    }
-
-    .coupon-label {
-      margin: 0 0 0.5rem;
-    }
-
-    .coupon-code {
-      margin: 0.5rem 0 1rem;
-      font-size: clamp(2.5rem, 7vw, 5rem);
-      line-height: 1;
-    }
-
-    .coupon-whatsapp {
-      margin: 1rem 0 0;
-    }
-
-    :global(footer),
-    :global(.site-footer) {
-      margin-bottom: 0 !important;
-    }
-  </style>
 </MainLayout>

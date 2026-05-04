@@ -9,7 +9,7 @@
       "Recibe tu resultado de forma inmediata.",
       "Obtén recomendaciones personalizadas según tu resultado."
     ],
-    "image": "/media/mide-tu-ingles/robot.gif",
+    "image": "/media/mide-tu-ingles/robot.webp",
     "imageAlt": "Robot de la prueba de inglés"
   },
   "levelButtons": [
@@ -84,7 +84,7 @@
       "Acceso a una mini lección exclusiva según tu nivel.",
       "Asesoría gratuita para trazar tu plan de aprendizaje."
     ],
-    "image": "/media/mide-tu-ingles/beneficios-test.gif",
+    "image": "/media/mide-tu-ingles/beneficios-test.webp",
     "imageAlt": "Ilustración de beneficios del test",
     "selectorText": "Escoge el nivel en el que quieres ponerte a prueba:"
   }

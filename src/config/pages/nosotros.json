@@ -14,7 +14,7 @@
       "id": "como-hacemos",
       "variant": "dual",
       "left": {
-        "image": "/media/nosotros/sections/01-como-hacemos.gif",
+        "image": "/media/nosotros/sections/01-como-hacemos.webp",
         "imageAlt": "Ilustración sobre cómo lo hacemos",
         "title": "¿Cómo lo Hacemos?",
         "paragraphs": [
@@ -29,7 +29,7 @@
           "Queremos romper las barreras del aprendizaje tradicional y ofrecerte una experiencia dinámica, accesible y efectiva.",
           "Con clases en grupos pequeños y una metodología de inmersión, así garantizamos que cada estudiante reciba la atención y el apoyo que necesita para avanzar."
         ],
-        "image": "/media/nosotros/sections/01-que-nos-motiva.gif",
+        "image": "/media/nosotros/sections/01-que-nos-motiva.webp",
         "imageAlt": "Ilustración sobre motivación"
       }
     },
@@ -38,7 +38,7 @@
       "variant": "vision",
       "title": "Misión y visión",
       "statement": "¡Ser la mejor alternativa virtual para aprender inglés en Colombia, con calidad, accesibilidad y resultados reales!",
-      "image": "/media/nosotros/sections/02-mision-vision.gif",
+      "image": "/media/nosotros/sections/02-mision-vision.webp",
       "imageAlt": "Ilustración de misión y visión"
     }
   ]

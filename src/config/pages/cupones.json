@@ -1,0 +1,64 @@
+    {
+        "apiUrl": "https://script.google.com/macros/s/AKfycbxTEk-816FWXaV5AapzBAHE-7SmU9mywdk4ddiuaXXk76NuaQhf0O264jaFQ_vIL-wW/exec",
+        "website": "www.englishsenses.com",
+        "mascot": {
+            "src": "/media/cupones/megaphone.webp",
+            "alt": "Mascota English Senses"
+        },
+        "brandLogo": {
+            "src": "/media/shared/logo.svg",
+            "alt": "Logo English Senses"
+        },
+        "whatsapp": {
+            "href": "https://wa.me/573005986546",
+            "label": "Escríbenos por WhatsApp"
+        },
+        "initialCard": {
+            "title": "ENGLISH SENSES",
+            "headline": "REDIME TU CUPÓN",
+            "buttonLabel": "VER MI CUPÓN",
+            "codeText": "HAZ CLIC EN EL BOTÓN PARA OBTENERLO",
+            "transferText": "Cupón transferible",
+            "whatsappText": "Después de obtener tu cupón, escríbenos por WhatsApp para redimirlo."
+        },
+        "loadingCard": {
+            "title": "ENGLISH SENSES",
+            "headline": "VALIDANDO DISPONIBILIDAD",
+            "pillText": "BUSCANDO...",
+            "codeText": "UN MOMENTO, ESTAMOS BUSCANDO TU CUPÓN"
+        },
+        "errorCard": {
+            "title": "ENGLISH SENSES",
+            "headline": "NO PUDIMOS CARGAR EL CUPÓN",
+            "buttonLabel": "INTENTAR NUEVAMENTE",
+            "codeText": "REVISA TU CONEXIÓN Y VUELVE A INTENTAR"
+        },
+        "soldOutCard": {
+            "title": "CUPONES<br />AGOTADOS",
+            "pillText": "TENDREMOS DISPONIBLE EL DÍA 01",
+            "codeText": "GRACIAS POR TU INTERÉS"
+        },
+        "couponCard": {
+            "validUntilText": "Válido hasta",
+            "transferText": "Cupón transferible",
+            "whatsappText": "Para redimir este cupón, escríbenos por WhatsApp y envíanos el código asignado."
+        },
+        "templates": {
+            "adultos": {
+                "headline": "CUMPLE TU META DE HABLAR INGLÉS",
+                "label": "CURSO PARA ADULTO"
+            },
+            "ninos": {
+                "headline": "SU AVENTURA CON EL INGLÉS EMPIEZA AQUÍ",
+                "label": "CURSO PARA NIÑOS"
+            },
+            "asesoria-tutoria": {
+                "headline": "RECIBE EL APOYO QUE NECESITAS",
+                "label": "ASESORÍA / TUTORÍA"
+            },
+            "default": {
+                "headline": "REDIME TU CUPÓN DE DESCUENTO",
+                "label": "CUPÓN ESPECIAL"
+            }
+        }
+    }
