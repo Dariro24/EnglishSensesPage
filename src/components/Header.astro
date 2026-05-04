@@ -1,8 +1,15 @@
 ---
 import siteContent from "../config/site.json";
 
-const pathname = Astro.url.pathname;
 const { site, navigation } = siteContent;
+
+const normalizePath = (path: string) => {
+  if (!path) return "/";
+  const cleaned = path.replace(/\/+$/, "");
+  return cleaned === "" ? "/" : cleaned;
+};
+
+const pathname = normalizePath(Astro.url.pathname);
 ---
 
 <header class="site-header">
@@ -18,7 +25,9 @@ const { site, navigation } = siteContent;
     <nav class="site-header__nav" aria-label="Navegación principal">
       <ul class="site-header__list">
         {navigation.map((item) => {
-          const isActive = pathname === item.href;
+          const itemHref = normalizePath(item.href);
+          const isActive = pathname === itemHref;
+
           return (
             <li>
               <a
@@ -59,12 +68,17 @@ const { site, navigation } = siteContent;
     <div class="site-shell">
       <ul class="site-mobile-nav__list">
         {navigation.map((item) => {
-          const isActive = pathname === item.href;
+          const itemHref = normalizePath(item.href);
+          const isActive = pathname === itemHref;
+
           return (
             <li class="site-mobile-nav__item">
               <a
                 href={item.href}
-                class="site-mobile-nav__link"
+                class:list={[
+                  "site-mobile-nav__link",
+                  isActive && "site-mobile-nav__link--active"
+                ]}
                 aria-current={isActive ? "page" : undefined}
               >
                 {item.label}
