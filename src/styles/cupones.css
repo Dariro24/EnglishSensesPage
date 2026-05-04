@@ -391,3 +391,218 @@ footer,
     font-size: 0.92rem;
   }
 }
+
+/* ============================= */
+/* AJUSTE PARA MÓVIL */
+/* ============================= */
+
+@media (max-width: 640px) {
+  .coupon-section,
+  .coupon-result,
+  .coupon-card {
+    min-height: auto;
+  }
+
+  .coupon-card {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .coupon-card__top {
+    min-height: 235px;
+    padding: 2rem 1rem 0;
+    justify-content: center;
+    overflow: visible;
+  }
+
+  .coupon-card__bottom {
+    padding: 3.2rem 1rem 1.5rem;
+  }
+
+  .coupon-card__main-title,
+  .coupon-card__discount {
+    max-width: 82%;
+    font-size: clamp(2.25rem, 11vw, 3rem);
+    line-height: 0.95;
+  }
+
+  .coupon-card__headline {
+    max-width: 82%;
+    margin-top: 0.75rem;
+    font-size: clamp(0.9rem, 4vw, 1.15rem);
+    line-height: 1.1;
+  }
+
+  .coupon-card__pill {
+    min-width: min(84vw, 295px);
+    min-height: 40px;
+    margin: 1rem auto -1.55rem;
+    padding: 0.55rem 1rem;
+    font-size: 0.72rem;
+    border-width: 2px;
+  }
+
+  .coupon-card__split-logo {
+    width: 58px;
+    left: 0.9rem;
+    bottom: 0;
+    transform: translateY(50%);
+    z-index: 12;
+  }
+
+  .coupon-card__mascot {
+    display: none;
+  }
+
+  .coupon-card__code--barcode {
+    width: min(88vw, 310px);
+    min-height: 78px;
+    padding: 0.65rem;
+    background:
+      repeating-linear-gradient(
+        90deg,
+        #000000 0 5px,
+        transparent 5px 9px,
+        #000000 9px 13px,
+        transparent 13px 18px
+      );
+  }
+
+  .coupon-card__code-text {
+    max-width: 92%;
+    padding: 0.5rem 0.75rem;
+    font-size: clamp(0.82rem, 4.4vw, 1rem);
+    line-height: 1.12;
+    letter-spacing: 0.02em;
+  }
+
+  .coupon-card__barcode {
+    width: min(82vw, 300px);
+    height: 62px;
+  }
+
+  .coupon-card__code {
+    max-width: 82vw;
+    margin-top: -2rem;
+    padding: 0.35rem 0.7rem;
+    font-size: 0.92rem;
+  }
+
+  .coupon-card__meta {
+    width: 100%;
+    margin-top: 0.95rem;
+    justify-content: center;
+    text-align: center;
+    font-size: 0.88rem;
+  }
+
+  .coupon-card__meta--center {
+    justify-content: center;
+  }
+
+  .coupon-card__whatsapp-text {
+    max-width: 300px;
+    margin-top: 0.8rem;
+    font-size: 0.78rem;
+    line-height: 1.35;
+  }
+
+  .coupon-card__site {
+    margin-top: 1.7rem;
+    padding-top: 0;
+    font-size: 0.78rem;
+  }
+
+  .floating-whatsapp {
+    width: 58px;
+    height: 58px;
+    right: 1rem;
+    bottom: 1.2rem;
+  }
+}
+
+@media (max-width: 380px) {
+  .coupon-card__top {
+    min-height: 225px;
+  }
+
+  .coupon-card__main-title,
+  .coupon-card__discount {
+    font-size: clamp(2.05rem, 10.5vw, 2.65rem);
+  }
+
+  .coupon-card__headline {
+    font-size: 0.85rem;
+  }
+
+  .coupon-card__pill {
+    min-width: 82vw;
+    font-size: 0.68rem;
+  }
+
+  .coupon-card__split-logo {
+    width: 52px;
+    left: 0.75rem;
+  }
+
+  .coupon-card__code--barcode {
+    width: 86vw;
+  }
+
+  .coupon-card__code-text {
+    font-size: 0.78rem;
+  }
+
+  .coupon-card__whatsapp-text {
+    max-width: 280px;
+  }
+}
+/* ===================================== */
+/* AJUSTE EXTRA SOLO PARA LA TARJETA INICIAL EN MÓVIL */
+/* ===================================== */
+
+@media (max-width: 640px) {
+  .coupon-card--initial .coupon-card__top {
+    min-height: 245px;
+    padding-bottom: 0.35rem;
+  }
+
+  .coupon-card--initial .coupon-card__split-logo {
+    width: 46px;
+    left: 0.55rem;
+    bottom: -10px;
+    transform: none;
+    z-index: 8;
+  }
+
+  .coupon-card--initial .coupon-card__pill {
+    min-width: min(78vw, 270px);
+    min-height: 40px;
+    margin: 0.95rem auto -1.45rem;
+    padding: 0.55rem 0.9rem;
+    font-size: 0.72rem;
+    z-index: 12;
+  }
+
+  .coupon-card--initial .coupon-card__headline {
+    max-width: 78%;
+    margin-top: 0.7rem;
+  }
+
+  .coupon-card--initial .coupon-card__main-title {
+    max-width: 78%;
+  }
+}
+
+@media (max-width: 380px) {
+  .coupon-card--initial .coupon-card__split-logo {
+    width: 40px;
+    left: 0.45rem;
+    bottom: -8px;
+  }
+
+  .coupon-card--initial .coupon-card__pill {
+    min-width: 76vw;
+    font-size: 0.68rem;
+  }
+}
