@@ -5,7 +5,7 @@
     "description": "Clases en vivo con profesores cualificados, material interactivo y seguimiento personalizado.",
     "primaryButtonLabel": "Inscríbete Ahora",
     "heroCharacter": "/media/home/hero/hero-personaje.webp",
-    "arrowGif": "/media/home/hero/arrow.gif"
+    "arrowGif": "/media/home/hero/arrow.webp"
   },
   "sections": [
     {
@@ -17,7 +17,7 @@
         "Conéctate desde casa y accede a clases en vivo.",
         "Horarios flexibles que se adaptan a tu rutina."
       ],
-      "image": "/media/home/sections/01-rompe-barreras.gif",
+      "image": "/media/home/sections/01-rompe-barreras.webp",
       "imageAlt": "Ilustración de aprendizaje a distancia",
       "imagePosition": "left"
     },
@@ -30,7 +30,7 @@
         "A tu ritmo, con apoyo de nuestros tutores.",
         "Feedback constante y seguimiento personalizado para que avances con confianza."
       ],
-      "image": "/media/home/sections/02-aprendizaje-semi-personalizado.gif",
+      "image": "/media/home/sections/02-aprendizaje-semi-personalizado.webp",
       "imageAlt": "Ilustración de grupos reducidos",
       "imagePosition": "right"
     },
@@ -44,7 +44,7 @@
         "Interacción con tus profesores y compañeros en tiempo real.",
         "Salón virtual, foros colaborativos, chat internos y más."
       ],
-      "image": "/media/home/sections/03-entorno-virtual.gif",
+      "image": "/media/home/sections/03-entorno-virtual.webp",
       "imageAlt": "Ilustración de entorno virtual",
       "imagePosition": "left"
     },
@@ -60,7 +60,7 @@
         "Herramientas efectivas para lograr tus metas.",
         "Sistema de monitoreo que te mantiene conectado."
       ],
-      "image": "/media/home/sections/04-que-nos-diferencia.gif",
+      "image": "/media/home/sections/04-que-nos-diferencia.webp",
       "imageAlt": "Ilustración de crecimiento y diferenciación",
       "imagePosition": "right"
     },
@@ -86,7 +86,7 @@
       "bullets": [],
       "image": "/media/home/sections/06-aprende-sin-presiones-left.webp",
       "imageAlt": "Personaje bajo un reflector",
-      "imageSecondary": "/media/home/sections/06-aprende-sin-presiones-right.gif",
+      "imageSecondary": "/media/home/sections/06-aprende-sin-presiones-right.webp",
       "imageSecondaryAlt": "Ilustración final",
       "imagePosition": "final"
     }
