@@ -5,7 +5,6 @@ import siteContent from "../config/site.json";
 import homeContent from "../config/pages/home.json";
 import NextSectionButton from "../components/NextSectionButton.astro";
 import SectionSheet from "../components/SectionSheet.astro";
-import Footer from "../components/Footer.astro";
 
 const { links } = siteContent;
 const { home, sections } = homeContent;
@@ -14,7 +13,7 @@ const regularSections = sections.slice(0, -1);
 const finalSection = sections[sections.length - 1];
 ---
 
-<MainLayout title="Inicio" showFooter={false}>
+<MainLayout title="Inicio" showFooter={true}>
   <section id="home" class="home-hero section-sheet">
     <div class="site-shell home-hero__inner">
       <div class="home-hero__character-wrap">
@@ -137,10 +136,6 @@ const finalSection = sections[sections.length - 1];
           />
         </div>
       </div>
-    </div>
-
-    <div class="section-sheet__footer-wrap">
-      <Footer />
     </div>
   </section>
 

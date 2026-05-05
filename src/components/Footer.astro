@@ -6,7 +6,7 @@ const { footer } = footerContent;
 
 <footer class="site-footer">
   <div class="site-footer__top">
-    <div class="site-shell site-footer__top-inner">
+    <div class="site-footer__inner site-footer__top-inner">
       <div class="site-footer__info">
         <div class="site-footer__item">
           <svg
@@ -18,7 +18,7 @@ const { footer } = footerContent;
             <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5Z" />
           </svg>
 
-          <div>
+          <div class="site-footer__text">
             <strong>{footer.address.title}</strong>
             <p>{footer.address.text}</p>
           </div>
@@ -37,7 +37,7 @@ const { footer } = footerContent;
             <path d="M4 7l8 6 8-6" />
           </svg>
 
-          <div>
+          <div class="site-footer__text">
             <strong>{footer.email.primary}</strong>
             <p>{footer.email.secondary}</p>
           </div>
@@ -53,7 +53,7 @@ const { footer } = footerContent;
             <path d="M6.62 10.79a15.053 15.053 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.01-.24c1.11.37 2.31.57 3.58.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.3 21 3 13.7 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.27.2 2.47.57 3.58a1 1 0 0 1-.24 1.01l-2.21 2.2Z" />
           </svg>
 
-          <div>
+          <div class="site-footer__text">
             <strong>{footer.phone.number}</strong>
             <p>{footer.phone.schedule}</p>
           </div>
@@ -116,13 +116,11 @@ const { footer } = footerContent;
   </div>
 
   <div class="site-footer__bottom">
-    <div class="site-shell site-footer__bottom-inner">
-      <div class="site-footer__bottom-spacer"></div>
-
+    <div class="site-footer__inner site-footer__bottom-inner">
       <div class="site-footer__copyright">
         <p>{footer.copyright.line1}</p>
         <p>{footer.copyright.line2}</p>
-        <span class="site-footer__credits-icon">&lt;/&gt;</span>
+        <span class="site-footer__credits-icon"></span>
       </div>
     </div>
   </div>

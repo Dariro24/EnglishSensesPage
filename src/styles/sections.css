@@ -1,10 +1,17 @@
+/* =========================================================
+   SECTIONS.CSS / REFACTORIZADO
+   ========================================================= */
+
 :root {
+  /* Estructura general */
+  --sheet-border: 1px solid rgba(0, 74, 173, 0.08);
+
   --sheet-padding-top-desktop: 12px;
   --sheet-padding-bottom-desktop: 16px;
   --sheet-padding-top-tablet: 14px;
   --sheet-padding-bottom-tablet: 18px;
-  --sheet-padding-top-mobile: 16px;
-  --sheet-padding-bottom-mobile: 20px;
+  --sheet-padding-top-mobile: 20px;
+  --sheet-padding-bottom-mobile: 24px;
 
   --sheet-actions-gap-desktop: 16px;
   --sheet-actions-gap-tablet: 18px;
@@ -12,24 +19,97 @@
 
   --sheet-content-min-height-desktop: calc(100vh - var(--header-height-desktop) - 38px);
   --sheet-content-min-height-tablet: calc(100vh - var(--header-height-tablet) - 42px);
-  --sheet-content-min-height-mobile: auto;
 
-  --sheet-final-min-height-desktop: calc(100vh - var(--header-height-desktop) - 176px);
-  --sheet-final-min-height-tablet: calc(100vh - var(--header-height-tablet) - 170px);
-  --sheet-final-min-height-mobile: auto;
+  --sheet-final-min-height-desktop: calc(100vh - var(--header-height-desktop) - 120px);
+  --sheet-final-min-height-tablet: calc(100vh - var(--header-height-tablet) - 120px);
+
+  /* Desktop / contenido */
+  --info-grid-width: min(100%, 1040px);
+  --info-grid-gap: 40px;
+  --info-title-size: clamp(46px, 4vw, 56px);
+  --info-description-size: 20px;
+  --info-list-size: 18px;
+  --info-image-width: 400px;
+  --info-image-max-height: 400px;
+  --info-emoji-width: 260px;
+  --info-reviews-width: 430px;
+  --info-reviews-max-height: 520px;
+
+  /* Mobile / contenido */
+  --mobile-section-shell-height: calc(100svh - var(--header-height-mobile) - 44px);
+  --mobile-info-width: 360px;
+  --mobile-info-gap: 16px;
+  --mobile-title-width: 330px;
+  --mobile-title-size: 2rem;
+  --mobile-title-line-height: 1.16;
+  --mobile-image-width: 250px;
+  --mobile-image-height: 230px;
+  --mobile-emoji-width: 190px;
+  --mobile-reviews-width: 245px;
+  --mobile-reviews-height: 265px;
+  --mobile-description-width: 330px;
+  --mobile-description-size: 0.98rem;
+  --mobile-description-line-height: 1.48;
+  --mobile-list-width: 330px;
+  --mobile-list-gap: 14px;
+  --mobile-list-size: 0.95rem;
+  --mobile-list-line-height: 1.42;
+  --mobile-list-padding: 30px;
+
+  /* Mobile / última sección */
+  --final-mobile-width: 360px;
+  --final-mobile-gap: 18px;
+  --final-title-width: 320px;
+  --final-title-size: 2rem;
+  --final-character-width: 210px;
+  --final-character-height: 280px;
+  --final-cta-width: 320px;
+  --final-cta-height: 56px;
+  --final-cta-size: 1.1rem;
+  --final-description-width: 305px;
+  --final-description-size: 1rem;
+  --final-bottom-image-width: 215px;
+  --final-bottom-image-height: 170px;
+}
+
+/* =========================================================
+   BASE / SECCIONES
+   ========================================================= */
+
+.section-sheet,
+.nosotros-section,
+.curso-section,
+.servicio-section,
+.test-section {
+  background: var(--color-background);
+  border-bottom: var(--sheet-border);
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
 }
 
 .section-sheet {
   min-height: calc(100vh - var(--header-height-desktop));
-  background: var(--color-background);
   display: flex;
   align-items: center;
   padding: 22px 0;
-  border-bottom: 1px solid rgba(0, 74, 173, 0.08);
-  scroll-snap-align: start;
-  scroll-snap-stop: always;
   scroll-margin-top: calc(var(--header-height-desktop) + 12px);
 }
+
+.nosotros-section,
+.curso-section,
+.servicio-section,
+.test-section {
+  min-height: calc(100vh - var(--header-height-desktop));
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  padding: var(--sheet-padding-top-desktop) 0 var(--sheet-padding-bottom-desktop);
+  scroll-margin-top: calc(var(--header-height-desktop) + 12px);
+}
+
+/* =========================================================
+   BOTONES
+   ========================================================= */
 
 .primary-cta {
   display: inline-flex;
@@ -45,7 +125,10 @@
   line-height: 1;
   font-weight: 700;
   text-align: center;
-  transition: transform 0.2s ease, opacity 0.2s ease;
+  text-decoration: none;
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
 }
 
 .primary-cta:hover {
@@ -62,7 +145,9 @@
   box-shadow: 0 0 0 6px rgba(0, 74, 173, 0.1);
   cursor: pointer;
   position: relative;
-  transition: transform 0.2s ease, opacity 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
 }
 
 .section-next-button:hover {
@@ -81,27 +166,10 @@
   transform: rotate(45deg) translate(-2px, -2px);
 }
 
-/* =========================
-   SISTEMA COMPARTIDO PARA PÁGINAS
-   ========================= */
+/* =========================================================
+   SHELLS COMPARTIDOS
+   ========================================================= */
 
-.nosotros-section,
-.curso-section,
-.servicio-section,
-.test-section {
-  min-height: calc(100vh - var(--header-height-desktop));
-  background: var(--color-background);
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  padding: var(--sheet-padding-top-desktop) 0 var(--sheet-padding-bottom-desktop);
-  border-bottom: 1px solid rgba(0, 74, 173, 0.08);
-  scroll-snap-align: start;
-  scroll-snap-stop: always;
-  scroll-margin-top: calc(var(--header-height-desktop) + 12px);
-}
-
-/* Nosotros: el botón vive dentro del .site-shell */
 .nosotros-section > .site-shell {
   width: min(100%, 1180px);
   min-height: var(--sheet-content-min-height-desktop);
@@ -109,7 +177,6 @@
   flex-direction: column;
 }
 
-/* Cursos / Servicios / Test: el botón vive como hermano del contenido */
 .curso-section > .site-shell:not(.curso-final__shell),
 .servicio-section > .site-shell:not(.servicio-final__shell),
 .test-section > .site-shell:not(.test-benefits-final__shell) {
@@ -119,7 +186,12 @@
   align-content: center;
 }
 
-/* Botones siguiente: misma posición visual */
+.info-section .site-shell {
+  min-height: var(--sheet-content-min-height-desktop);
+  display: flex;
+  flex-direction: column;
+}
+
 .nosotros-section__next,
 .curso-section__next,
 .servicio-section__next,
@@ -128,25 +200,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.nosotros-section__next {
   margin-top: auto;
   padding-top: var(--sheet-actions-gap-desktop);
 }
 
-.curso-section__next,
-.servicio-section__next,
-.test-section__next {
-  margin-top: auto;
-  padding-top: var(--sheet-actions-gap-desktop);
-}
-
-.info-section .site-shell {
-  min-height: var(--sheet-content-min-height-desktop);
-  display: flex;
-  flex-direction: column;
-}
+/* =========================================================
+   SECCIONES INFORMATIVAS
+   ========================================================= */
 
 .info-section__grid,
 .info-section__split,
@@ -155,22 +215,13 @@
   align-items: center;
 }
 
-.info-section__next {
-  margin-top: auto;
-  padding-top: var(--sheet-actions-gap-desktop);
-}
-
-/* =========================
-   SECCIONES HOME
-   ========================= */
-
 .info-section__grid {
-  width: min(100%, 1040px);
+  width: var(--info-grid-width);
   margin-inline: auto;
   display: grid;
   grid-template-columns: minmax(300px, 420px) minmax(380px, 540px);
   justify-content: center;
-  gap: 40px;
+  gap: var(--info-grid-gap);
 }
 
 .info-section__grid--reverse {
@@ -192,9 +243,9 @@
 }
 
 .info-section__image {
+  width: var(--info-image-width);
   max-width: 100%;
-  width: 400px;
-  max-height: 400px;
+  max-height: var(--info-image-max-height);
   object-fit: contain;
 }
 
@@ -209,17 +260,17 @@
 .info-section__title {
   margin: 0;
   color: var(--color-primary);
-  font-size: clamp(46px, 4vw, 56px);
+  font-size: var(--info-title-size);
   line-height: 1.16;
   font-weight: 700;
 }
 
 .info-section__description {
   margin: 0;
-  font-size: 20px;
+  max-width: 620px;
+  font-size: var(--info-description-size);
   line-height: 1.52;
   font-weight: 600;
-  max-width: 620px;
 }
 
 .info-section__list {
@@ -228,7 +279,7 @@
   list-style: none;
   display: grid;
   gap: 12px;
-  font-size: 18px;
+  font-size: var(--info-list-size);
   line-height: 1.52;
   font-weight: 600;
 }
@@ -238,8 +289,12 @@
   padding-left: 26px;
 }
 
+/* =========================================================
+   VARIANTE SPLIT
+   ========================================================= */
+
 .info-section__split {
-  width: min(100%, 1040px);
+  width: var(--info-grid-width);
   margin-inline: auto;
   display: grid;
   grid-template-columns: minmax(380px, 490px) minmax(360px, 500px);
@@ -262,17 +317,21 @@
 }
 
 .info-section__image--emoji {
-  width: 260px;
+  width: var(--info-emoji-width);
   max-width: 100%;
   object-fit: contain;
 }
 
 .info-section__image--reviews {
-  width: 430px;
+  width: var(--info-reviews-width);
   max-width: 100%;
-  max-height: 520px;
+  max-height: var(--info-reviews-max-height);
   object-fit: contain;
 }
+
+/* =========================================================
+   VARIANTE FINAL / SECCIONES CON CIERRE
+   ========================================================= */
 
 .info-section__final {
   width: min(100%, 1080px);
@@ -320,9 +379,9 @@
   object-fit: contain;
 }
 
-/* =========================
-   ÚLTIMAS SECCIONES CON FOOTER
-   ========================= */
+/* =========================================================
+   SECCIONES FINALES CON FOOTER INTERNO
+   ========================================================= */
 
 .section-sheet--final,
 .nosotros-section--vision,
@@ -366,11 +425,24 @@
   display: block;
 }
 
-/* =========================
+/* =========================================================
    TABLET GRANDE
-   ========================= */
+   ========================================================= */
 
 @media (max-width: 1199px) {
+  :root {
+    --info-grid-width: min(100%, 950px);
+    --info-grid-gap: 24px;
+    --info-title-size: clamp(40px, 3.7vw, 50px);
+    --info-description-size: 18px;
+    --info-list-size: 17px;
+    --info-image-width: 320px;
+    --info-image-max-height: 320px;
+    --info-emoji-width: 230px;
+    --info-reviews-width: 380px;
+    --info-reviews-max-height: 460px;
+  }
+
   .section-sheet {
     padding: 20px 0;
   }
@@ -383,50 +455,15 @@
     padding-bottom: var(--sheet-padding-bottom-desktop);
   }
 
-  .nosotros-section > .site-shell {
-    min-height: var(--sheet-content-min-height-tablet);
-  }
-
+  .nosotros-section > .site-shell,
   .info-section .site-shell {
     min-height: var(--sheet-content-min-height-tablet);
-  }
-
-  .info-section__grid,
-  .info-section__split {
-    width: min(100%, 950px);
-    gap: 24px;
   }
 
   .info-section__final {
     width: min(100%, 980px);
     grid-template-columns: 360px minmax(360px, 520px);
     gap: 34px;
-  }
-
-  .info-section__title {
-    font-size: clamp(40px, 3.7vw, 50px);
-  }
-
-  .info-section__description {
-    font-size: 18px;
-  }
-
-  .info-section__list {
-    font-size: 17px;
-  }
-
-  .info-section__image {
-    width: 320px;
-    max-height: 320px;
-  }
-
-  .info-section__image--emoji {
-    width: 230px;
-  }
-
-  .info-section__image--reviews {
-    width: 380px;
-    max-height: 460px;
   }
 
   .info-section__image--final-left {
@@ -447,9 +484,9 @@
   }
 }
 
-/* =========================
+/* =========================================================
    TABLET
-   ========================= */
+   ========================================================= */
 
 @media (max-width: 991px) {
   .section-sheet {
@@ -490,9 +527,9 @@
   .info-section__grid--reverse,
   .info-section__split,
   .info-section__final {
+    width: min(100%, 760px);
     grid-template-columns: 1fr;
     gap: 26px;
-    width: min(100%, 760px);
     flex: initial;
   }
 
@@ -546,88 +583,293 @@
   .curso-final__shell,
   .servicio-final__shell,
   .test-benefits-final__shell {
-    min-height: var(--sheet-final-min-height-mobile);
+    min-height: auto;
     padding-bottom: 20px;
   }
 }
 
-/* =========================
-   MOBILE
-   ========================= */
+/* =========================================================
+   MOBILE GENERAL
+   ========================================================= */
 
 @media (max-width: 767px) {
   .section-sheet {
-    min-height: auto;
-    padding: 28px 0;
-    scroll-margin-top: calc(var(--header-height-mobile) + 12px);
+    min-height: calc(100svh - var(--header-height-mobile));
+    display: flex;
+    align-items: stretch;
+    padding: var(--sheet-padding-top-mobile) 0 var(--sheet-padding-bottom-mobile);
+    scroll-margin-top: var(--header-height-mobile);
+  }
+
+  .section-sheet > .site-shell,
+  .section-sheet__shell,
+  .info-section .site-shell {
+    width: 100%;
+    min-height: var(--mobile-section-shell-height);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .info-section__grid,
+  .info-section__grid--reverse,
+  .info-section__split {
+    width: min(100%, var(--mobile-info-width));
+    max-width: var(--mobile-info-width);
+    margin-inline: auto;
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--mobile-info-gap);
+  }
+
+  .info-section__grid--reverse .info-section__media,
+  .info-section__grid--reverse .info-section__content {
+    order: initial;
+  }
+
+  .info-section__content,
+  .info-section__split-left {
+    display: contents;
+  }
+
+  .info-section__media,
+  .info-section__split-right {
+    order: 2;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .info-section__title {
+    order: 1;
+    width: 100%;
+    max-width: var(--mobile-title-width);
+    margin: 0 auto 2px;
+    color: var(--color-primary);
+    font-size: var(--mobile-title-size);
+    line-height: var(--mobile-title-line-height);
+    font-weight: 800;
+    text-align: center;
+  }
+
+  .info-section__image {
+    width: min(100%, var(--mobile-image-width));
+    max-width: var(--mobile-image-width);
+    max-height: var(--mobile-image-height);
+    height: auto;
+    display: block;
+    object-fit: contain;
+    margin-inline: auto;
+  }
+
+  .info-section__image--emoji {
+    width: min(100%, var(--mobile-emoji-width));
+    max-width: var(--mobile-emoji-width);
+    max-height: var(--mobile-emoji-width);
+  }
+
+  .info-section__image--reviews {
+    width: min(100%, var(--mobile-reviews-width));
+    max-width: var(--mobile-reviews-width);
+    max-height: var(--mobile-reviews-height);
+  }
+
+  .info-section__description {
+    order: 3;
+    width: 100%;
+    max-width: var(--mobile-description-width);
+    margin: 4px auto 0;
+    color: #111111;
+    font-size: var(--mobile-description-size);
+    line-height: var(--mobile-description-line-height);
+    font-weight: 700;
+    text-align: center;
+  }
+
+  .info-section__list {
+    order: 4;
+    width: 100%;
+    max-width: var(--mobile-list-width);
+    margin: 8px auto 0;
+    padding-left: 0;
+    display: grid;
+    gap: var(--mobile-list-gap);
+    color: #111111;
+    font-size: var(--mobile-list-size);
+    line-height: var(--mobile-list-line-height);
+    font-weight: 700;
+    text-align: left;
+  }
+
+  .info-section__list li {
+    padding-left: var(--mobile-list-padding);
+  }
+
+  .info-section__next {
+    margin-top: auto;
+    padding-top: var(--sheet-actions-gap-mobile);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .section-next-button {
+    width: 52px;
+    height: 52px;
+    box-shadow: 0 0 0 6px rgba(0, 74, 173, 0.1);
+  }
+
+  .section-next-button__icon {
+    width: 16px;
+    height: 16px;
+    border-right-width: 4px;
+    border-bottom-width: 4px;
+  }
+
+  .primary-cta {
+    width: min(100%, 330px);
+    min-height: 54px;
+    padding: 0 22px;
+    font-size: 20px;
   }
 
   .nosotros-section,
   .curso-section,
   .servicio-section,
   .test-section {
+    min-height: calc(100svh - var(--header-height-mobile));
     padding-top: var(--sheet-padding-top-mobile);
     padding-bottom: var(--sheet-padding-bottom-mobile);
-    scroll-margin-top: calc(var(--header-height-mobile) + 12px);
+    scroll-margin-top: var(--header-height-mobile);
+  }
+
+  .nosotros-section > .site-shell,
+  .curso-section > .site-shell:not(.curso-final__shell),
+  .servicio-section > .site-shell:not(.servicio-final__shell),
+  .test-section > .site-shell:not(.test-benefits-final__shell) {
+    min-height: var(--mobile-section-shell-height);
   }
 
   .nosotros-section__next,
   .curso-section__next,
   .servicio-section__next,
-  .test-section__next,
-  .info-section__next {
+  .test-section__next {
     padding-top: var(--sheet-actions-gap-mobile);
   }
+}
 
-  .primary-cta {
+/* =========================================================
+   MOBILE / ÚLTIMA SECCIÓN
+   Orden:
+   1) título
+   2) personaje
+   3) botón
+   4) texto
+   5) imagen inferior
+   6) footer
+   ========================================================= */
+
+@media (max-width: 767px) {
+  .section-sheet--final,
+  .nosotros-section--vision,
+  .curso-section--final,
+  .servicio-section--final,
+  .test-section--benefits-final {
+    min-height: auto;
+    display: block;
+    padding-top: 26px;
+    padding-bottom: 0;
+    border-bottom: 0;
+  }
+
+  .section-sheet__final-shell,
+  .nosotros-vision__shell,
+  .curso-final__shell,
+  .servicio-final__shell,
+  .test-benefits-final__shell {
     width: 100%;
-    max-width: 360px;
-    min-height: 52px;
-    font-size: 18px;
-    padding: 0 18px;
+    min-height: auto;
+    padding: 0 20px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
-  .section-next-button {
-    width: 50px;
-    height: 50px;
+  .section-sheet--final .info-section__final {
+    width: min(100%, var(--final-mobile-width));
+    max-width: var(--final-mobile-width);
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: var(--final-mobile-gap);
+    text-align: center;
   }
 
-  .section-next-button__icon {
-    width: 15px;
-    height: 15px;
-    border-right: 3px solid #ffffff;
-    border-bottom: 3px solid #ffffff;
+  .section-sheet--final .info-section__final-left,
+  .section-sheet--final .info-section__final-right {
+    width: 100%;
+    display: contents;
   }
 
-  .info-section__title {
-    font-size: var(--fs-title-mobile);
+  .section-sheet--final .info-section__final-right .info-section__title {
+    order: 1;
+    width: 100%;
+    max-width: var(--final-title-width);
+    margin: 0 auto 2px;
+    color: var(--color-primary);
+    font-size: var(--final-title-size);
+    line-height: 1.16;
+    font-weight: 800;
+    text-align: center;
   }
 
-  .info-section__description,
-  .info-section__list {
-    font-size: var(--fs-text-mobile);
+  .section-sheet--final .info-section__image--final-left {
+    order: 2;
+    width: min(100%, var(--final-character-width));
+    max-width: var(--final-character-width);
+    max-height: var(--final-character-height);
+    height: auto;
+    object-fit: contain;
+    margin: 0 auto;
   }
 
-  .info-section__image {
-    width: 280px;
+  .section-sheet--final .primary-cta {
+    order: 3;
+    width: min(100%, var(--final-cta-width));
+    min-height: var(--final-cta-height);
+    padding: 0 26px;
+    border-radius: 999px;
+    font-size: var(--final-cta-size);
+    line-height: 1;
+    font-weight: 800;
   }
 
-  .info-section__image--emoji {
-    width: 160px;
+  .section-sheet--final .info-section__final-right .info-section__description {
+    order: 4;
+    width: 100%;
+    max-width: var(--final-description-width);
+    margin: 0 auto;
+    color: #111111;
+    font-size: var(--final-description-size);
+    line-height: 1.4;
+    font-weight: 700;
+    text-align: center;
   }
 
-  .info-section__image--reviews {
-    width: 300px;
-  }
-
-  .info-section__image--final-left {
-    width: 240px;
-    max-width: 100%;
-    max-height: 340px;
-  }
-
-  .info-section__image--final-right {
-    width: 220px;
+  .section-sheet--final .info-section__image--final-right {
+    order: 5;
+    width: min(100%, var(--final-bottom-image-width));
+    max-width: var(--final-bottom-image-width);
+    max-height: var(--final-bottom-image-height);
+    height: auto;
+    object-fit: contain;
+    margin: 2px auto 0;
   }
 
   .section-sheet__footer-wrap,
@@ -636,5 +878,169 @@
   .servicio-section__footer,
   .test-section__footer {
     margin-top: 0;
+  }
+}
+
+/* =========================================================
+   MOBILE PEQUEÑO
+   ========================================================= */
+
+@media (max-width: 390px) {
+  :root {
+    --mobile-info-width: 335px;
+    --mobile-info-gap: 14px;
+    --mobile-title-width: 310px;
+    --mobile-title-size: 1.78rem;
+    --mobile-image-width: 230px;
+    --mobile-image-height: 215px;
+    --mobile-emoji-width: 175px;
+    --mobile-reviews-width: 225px;
+    --mobile-reviews-height: 250px;
+    --mobile-description-width: 305px;
+    --mobile-description-size: 0.9rem;
+    --mobile-description-line-height: 1.42;
+    --mobile-list-width: 305px;
+    --mobile-list-gap: 12px;
+    --mobile-list-size: 0.86rem;
+    --mobile-list-line-height: 1.36;
+    --mobile-list-padding: 28px;
+  }
+
+  .section-sheet {
+    padding-top: 18px;
+    padding-bottom: 22px;
+  }
+
+  .section-next-button {
+    width: 50px;
+    height: 50px;
+  }
+
+  .primary-cta {
+    min-height: 50px;
+    font-size: 18px;
+  }
+}
+
+/* =========================================================
+   MOBILE BAJO / IPHONE SE Y SIMILARES
+   ========================================================= */
+
+@media (max-width: 767px) and (max-height: 740px) {
+  :root {
+    --sheet-padding-top-mobile: 12px;
+    --sheet-padding-bottom-mobile: 12px;
+    --mobile-section-shell-height: calc(100svh - var(--header-height-mobile) - 24px);
+
+    --mobile-info-width: 340px;
+    --mobile-info-gap: 10px;
+    --mobile-title-width: 330px;
+    --mobile-title-size: 1.55rem;
+    --mobile-title-line-height: 1.12;
+    --mobile-image-width: 205px;
+    --mobile-image-height: 165px;
+    --mobile-emoji-width: 155px;
+    --mobile-reviews-width: 190px;
+    --mobile-reviews-height: 205px;
+    --mobile-description-width: 315px;
+    --mobile-description-size: 0.8rem;
+    --mobile-description-line-height: 1.32;
+    --mobile-list-width: 315px;
+    --mobile-list-gap: 8px;
+    --mobile-list-size: 0.78rem;
+    --mobile-list-line-height: 1.24;
+    --mobile-list-padding: 24px;
+
+    --final-mobile-width: 340px;
+    --final-mobile-gap: 16px;
+    --final-title-width: 310px;
+    --final-title-size: 1.8rem;
+    --final-character-width: 185px;
+    --final-character-height: 245px;
+    --final-cta-width: 300px;
+    --final-cta-height: 50px;
+    --final-cta-size: 1rem;
+    --final-description-width: 290px;
+    --final-description-size: 0.92rem;
+    --final-bottom-image-width: 195px;
+    --final-bottom-image-height: 155px;
+  }
+
+  .info-section__list li::before {
+    width: 15px;
+    height: 15px;
+    top: 2px;
+  }
+
+  .info-section__next {
+    margin-top: 0;
+    padding-top: 8px;
+  }
+
+  .section-next-button {
+    width: 44px;
+    height: 44px;
+    box-shadow: 0 0 0 5px rgba(0, 74, 173, 0.1);
+  }
+
+  .section-next-button__icon {
+    width: 13px;
+    height: 13px;
+    border-right-width: 3px;
+    border-bottom-width: 3px;
+  }
+}
+
+/* =========================================================
+   MOBILE MUY BAJO
+   ========================================================= */
+
+@media (max-width: 767px) and (max-height: 680px) {
+  :root {
+    --sheet-padding-top-mobile: 8px;
+    --sheet-padding-bottom-mobile: 8px;
+
+    --mobile-info-gap: 8px;
+    --mobile-title-size: 1.42rem;
+    --mobile-title-line-height: 1.08;
+    --mobile-image-width: 185px;
+    --mobile-image-height: 145px;
+    --mobile-emoji-width: 140px;
+    --mobile-reviews-width: 175px;
+    --mobile-reviews-height: 185px;
+    --mobile-description-width: 305px;
+    --mobile-description-size: 0.76rem;
+    --mobile-description-line-height: 1.26;
+    --mobile-list-width: 305px;
+    --mobile-list-gap: 6px;
+    --mobile-list-size: 0.74rem;
+    --mobile-list-line-height: 1.2;
+    --mobile-list-padding: 22px;
+
+    --final-mobile-gap: 14px;
+    --final-title-size: 1.65rem;
+    --final-character-width: 170px;
+    --final-character-height: 225px;
+    --final-cta-width: 285px;
+    --final-cta-height: 46px;
+    --final-cta-size: 0.95rem;
+    --final-description-size: 0.86rem;
+    --final-bottom-image-width: 180px;
+    --final-bottom-image-height: 145px;
+  }
+
+  .info-section__list li::before {
+    width: 14px;
+    height: 14px;
+    top: 1px;
+  }
+
+  .info-section__next {
+    padding-top: 6px;
+  }
+
+  .section-next-button {
+    width: 42px;
+    height: 42px;
   }
 }

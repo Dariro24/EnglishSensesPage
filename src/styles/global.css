@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap");
 @import "tailwindcss";
 @import "./header.css";
 @import "./pages.css";
@@ -14,7 +15,8 @@
   --color-text-soft: #4b5563;
   --color-border: rgba(0, 74, 173, 0.14);
 
-  --font-sans: "Hanken Grotesk", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+  /* Fuente principal del sitio */
+  --font-sans: "Quicksand", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
     sans-serif;
 
   --fs-title-desktop: 42px;
@@ -43,6 +45,12 @@
   --bullet-icon-url: url("/media/shared/icons/bullet-check.png");
 }
 
+/* 
+   Puedes dejar estas font-face por ahora.
+   No molestan mientras pruebas Quicksand.
+   Si luego decides dejar Quicksand de forma definitiva,
+   puedes quitar estas dos reglas si ya no usas Hanken Grotesk.
+*/
 @font-face {
   font-family: "Hanken Grotesk";
   src: url("/fonts/HankenGrotesk-VariableFont_wght.ttf") format("truetype");
@@ -70,7 +78,13 @@ html {
   background: var(--color-background);
   color: var(--color-text);
   scroll-behavior: smooth;
+
+  /* 
+     Si notas un scroll raro entre secciones,
+     prueba comentando esta línea.
+  */
   scroll-snap-type: y proximity;
+
   scroll-padding-top: calc(var(--header-height-desktop) + 12px);
 }
 
@@ -78,6 +92,11 @@ body {
   margin: 0;
   background: var(--color-background);
   color: var(--color-text);
+
+  /* 
+     Esto evita desbordes horizontales visibles,
+     pero también puede esconder errores de layout.
+  */
   overflow-x: hidden;
 }
 
@@ -114,6 +133,7 @@ select {
   background: var(--color-surface);
 }
 
+/* Viñetas personalizadas */
 .curso-hero__list li::before,
 .curso-final__list li::before,
 .servicio-card__list li::before,

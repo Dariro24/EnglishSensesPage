@@ -1,3 +1,12 @@
+/* =========================================================
+   HEADER GENERAL
+   ---------------------------------------------------------
+   Este archivo controla:
+   - logo
+   - navegación de escritorio
+   - menú móvil
+   ========================================================= */
+
 .site-header {
   position: sticky;
   top: 0;
@@ -14,6 +23,7 @@
   padding-top: 8px;
 }
 
+/* Logo */
 .site-header__brand {
   position: absolute;
   left: 22px;
@@ -30,6 +40,7 @@
   transform: translateY(14px);
 }
 
+/* Navegación escritorio */
 .site-header__nav {
   display: flex;
   align-items: center;
@@ -64,6 +75,7 @@
   opacity: 0.84;
 }
 
+/* Línea blanca del enlace activo */
 .site-header__link--active::after {
   content: "";
   position: absolute;
@@ -75,6 +87,7 @@
   background: #ffffff;
 }
 
+/* Oculto en escritorio */
 .site-header__toggle {
   display: none;
 }
@@ -82,6 +95,10 @@
 .site-mobile-nav {
   display: none;
 }
+
+/* =========================================================
+   TABLET GRANDE
+   ========================================================= */
 
 @media (max-width: 1199px) {
   .site-header__inner {
@@ -112,6 +129,10 @@
     padding-bottom: 9px;
   }
 }
+
+/* =========================================================
+   TABLET
+   ========================================================= */
 
 @media (max-width: 991px) {
   .site-header__inner {
@@ -144,23 +165,47 @@
   }
 }
 
+/* =========================================================
+   MOBILE
+   ---------------------------------------------------------
+   Aquí reducimos el logo y lo centramos visualmente en alto.
+   Así se parece más a tu referencia deseada.
+   ========================================================= */
+
 @media (max-width: 767px) {
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 80;
+    background: var(--color-primary);
+    overflow: visible; /* importante para que el logo salga del header */
+  }
+
   .site-header__inner {
     min-height: var(--header-height-mobile);
     justify-content: flex-end;
-    align-items: center;
+    align-items: flex-start;
     padding-top: 0;
+    position: relative;
+    overflow: visible; /* evita que el logo sea recortado */
   }
 
+  /* Logo con efecto "partido a la mitad" */
   .site-header__brand {
+    position: absolute;
     left: 10px;
-    top: 2px;
+    top: 0;
+    z-index: 5;
+    display: inline-flex;
+    align-items: center;
+    overflow: visible;
   }
 
   .site-header__logo {
-    width: 82px;
-    height: 82px;
-    transform: translateY(10px);
+    width: 58px;
+    height: 58px;
+    object-fit: contain;
+    transform: translateY(12px); /* esto lo hace sobresalir hacia abajo */
   }
 
   .site-header__nav {
@@ -178,11 +223,12 @@
     color: #ffffff;
     cursor: pointer;
     padding: 0;
-    margin-right: 6px;
+    margin-right: 8px;
+    margin-top: 4px;
   }
 
   .site-header__toggle-icon {
-    width: 24px;
+    width: 26px;
     height: 2px;
     background: currentColor;
     position: relative;
@@ -194,18 +240,18 @@
     content: "";
     position: absolute;
     left: 0;
-    width: 24px;
+    width: 26px;
     height: 2px;
     background: currentColor;
     border-radius: 999px;
   }
 
   .site-header__toggle-icon::before {
-    top: -7px;
+    top: -8px;
   }
 
   .site-header__toggle-icon::after {
-    top: 7px;
+    top: 8px;
   }
 
   .site-mobile-nav {

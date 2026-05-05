@@ -1,3 +1,7 @@
+/* =========================================================
+   HOME / HERO PRINCIPAL
+   ========================================================= */
+
 .home-hero.section-sheet {
   min-height: calc(100vh - var(--header-height-desktop));
   align-items: flex-start;
@@ -23,11 +27,16 @@
   min-height: calc(100vh - var(--header-height-desktop) - 28px);
 }
 
+/* =========================================================
+   PERSONAJE
+   ========================================================= */
+
 .home-hero__character-wrap {
   grid-area: character;
   display: flex;
   align-items: flex-end;
   justify-content: center;
+  position: relative;
 }
 
 .home-hero__character {
@@ -36,6 +45,10 @@
   max-height: 520px;
   object-fit: contain;
 }
+
+/* =========================================================
+   MENSAJE / TÍTULO
+   ========================================================= */
 
 .home-hero__message-wrap {
   grid-area: message;
@@ -51,6 +64,10 @@
   object-fit: contain;
 }
 
+/* =========================================================
+   FLECHA
+   ========================================================= */
+
 .home-hero__arrow-wrap {
   grid-area: arrow;
   display: flex;
@@ -58,6 +75,7 @@
   justify-content: flex-end;
   overflow: visible;
   transform: none;
+  position: relative;
 }
 
 .home-hero__arrow-gif {
@@ -66,7 +84,12 @@
   object-fit: contain;
   transform: translate(12px, 8px) scale(1.06);
   transform-origin: center;
+  display: block;
 }
+
+/* =========================================================
+   BOTÓN CTA
+   ========================================================= */
 
 .home-hero__cta-wrap {
   grid-area: cta;
@@ -75,6 +98,14 @@
   align-items: center;
   margin-top: -2px;
 }
+
+.home-hero__cta-wrap .primary-cta {
+  min-width: 380px;
+}
+
+/* =========================================================
+   DESCRIPCIÓN
+   ========================================================= */
 
 .home-hero__description {
   grid-area: description;
@@ -86,6 +117,10 @@
   text-align: center;
 }
 
+/* =========================================================
+   BOTÓN SIGUIENTE
+   ========================================================= */
+
 .home-hero__actions {
   grid-area: actions;
   display: flex;
@@ -93,6 +128,10 @@
   align-items: center;
   margin-top: 4px;
 }
+
+/* =========================================================
+   WHATSAPP FLOTANTE
+   ========================================================= */
 
 .floating-whatsapp {
   position: fixed;
@@ -114,6 +153,10 @@
   width: 28px;
   height: 28px;
 }
+
+/* =========================================================
+   TABLET GRANDE / LAPTOP
+   ========================================================= */
 
 @media (max-width: 1199px) {
   .home-hero.section-sheet {
@@ -146,14 +189,22 @@
   .home-hero__arrow-gif {
     width: 132px;
     max-width: none;
-    transform: translate(8px, 6px) scale(1.04);
+    transform: translate(72px, 24px) scale(1.04);
   }
 
   .home-hero__description {
     max-width: 460px;
     font-size: var(--fs-text-tablet);
   }
+
+  .home-hero__cta-wrap .primary-cta {
+    min-width: 330px;
+  }
 }
+
+/* =========================================================
+   TABLET
+   ========================================================= */
 
 @media (max-width: 991px) {
   .home-hero.section-sheet {
@@ -188,13 +239,28 @@
   .home-hero__arrow-gif {
     width: 98px;
     max-width: none;
-    transform: translate(4px, 4px) scale(1.02);
+    transform: translate(72px, 24px) scale(1.02);
   }
 
   .home-hero__description {
     max-width: 360px;
   }
+
+  .home-hero__cta-wrap .primary-cta {
+    min-width: 280px;
+  }
 }
+
+/* =========================================================
+   MÓVIL
+   Orden deseado:
+   1) texto
+   2) personaje
+   3) flecha (en absoluto, pegada al personaje)
+   4) botón
+   5) descripción
+   6) siguiente
+   ========================================================= */
 
 @media (max-width: 767px) {
   .home-hero.section-sheet {
@@ -206,47 +272,112 @@
 
   .home-hero__inner {
     width: 100%;
-    grid-template-columns: 1fr;
-    grid-template-areas:
-      "character"
-      "message"
-      "arrow"
-      "cta"
-      "description"
-      "actions";
-    justify-items: center;
-    row-gap: 14px;
     min-height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    position: relative; /* necesario para el absolute de la flecha */
   }
 
-  .home-hero__character {
-    width: 205px;
-    max-height: 260px;
+  /* 1) TEXTO */
+  .home-hero__message-wrap {
+    order: 1;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 0;
   }
 
   .home-hero__message-image {
-    max-width: 100%;
-    width: min(100%, 360px);
+    width: min(100%, 300px);
+    height: auto;
+    display: block;
   }
 
-  .home-hero__arrow-wrap {
-    transform: none;
-    align-items: center;
+  /* 2) PERSONAJE */
+  .home-hero__character-wrap {
+    order: 2;
+    width: 100%;
+    display: flex;
     justify-content: center;
-    overflow: visible;
+    align-items: flex-end;
+    position: relative;
+    margin: 0;
+  }
+
+  .home-hero__character {
+    width: 200px;
+    max-height: 230px;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* FLECHA — posición absoluta dentro del __inner,
+     arranca desde la mano del personaje (derecha del personaje)
+     y cae verticalmente hacia el botón */
+  .home-hero__arrow-wrap {
+    position: absolute;
+    left: calc(50% + 60px);  
+    top: 220px;              
+    width: 80px;
+    height: auto;
+    pointer-events: none;
+    z-index: 3;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
   }
 
   .home-hero__arrow-gif {
-    width: 82px;
-    max-width: 100%;
-    transform: none;
+    width: 100px;
+    height: auto;
+    display: block;
+    object-fit: contain;
+    transform: rotate(90deg); 
+    transform-origin: top center;
   }
 
+  /* 3) BOTÓN CTA */
+  .home-hero__cta-wrap {
+    order: 3;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+  }
+
+  .home-hero__cta-wrap .primary-cta,
+  .home-hero__cta-wrap a,
+  .home-hero__cta-wrap button {
+    width: min(100%, 360px);
+    min-width: 0;
+  }
+
+  /* 4) DESCRIPCIÓN */
   .home-hero__description {
-    max-width: 340px;
-    font-size: var(--fs-text-mobile);
+    order: 4;
+    max-width: 330px;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 0.95rem;
+    line-height: 1.45;
   }
 
+  /* 5) BOTÓN SIGUIENTE */
+  .home-hero__actions {
+    order: 5;
+    width: 100%;
+    margin-top: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* WHATSAPP */
   .floating-whatsapp {
     width: 50px;
     height: 50px;
@@ -259,6 +390,9 @@
     height: 22px;
   }
 }
+/* =========================================================
+   ÚLTIMA SECCIÓN DEL HOME
+   ========================================================= */
 
 .section-sheet--final .section-sheet__final-shell {
   min-height: calc(100vh - var(--header-height-desktop) - 230px);
@@ -320,5 +454,137 @@
   .section-sheet--final .info-section__image--final-left {
     width: 230px;
     max-height: 280px;
+  }
+}
+
+/* =========================================================
+   HOME / EXPERIENCIAS
+   Ajuste específico de la sección "Experiencias"
+   ========================================================= */
+
+@media (max-width: 767px) {
+  #experiencias.section-sheet {
+    min-height: calc(100svh - var(--header-height-mobile));
+    padding-top: 18px;
+    padding-bottom: 18px;
+    display: flex;
+    align-items: center;
+  }
+
+  #experiencias > .site-shell,
+  #experiencias .site-shell {
+    min-height: calc(100svh - var(--header-height-mobile) - 36px);
+    justify-content: center;
+  }
+
+  #experiencias .info-section__split {
+    width: min(100%, 335px);
+    max-width: 335px;
+    gap: 14px;
+  }
+
+  #experiencias .info-section__split-left,
+  #experiencias .info-section__split-right,
+  #experiencias .info-section__content {
+    display: contents;
+  }
+
+  #experiencias .info-section__title {
+    order: 1;
+    max-width: 310px;
+    font-size: 2rem;
+    line-height: 1.14;
+    text-align: center;
+  }
+
+  #experiencias .info-section__image--emoji {
+    order: 2;
+    width: min(100%, 155px);
+    max-width: 155px;
+    max-height: 155px;
+  }
+
+  #experiencias .info-section__list {
+    order: 3;
+    max-width: 290px;
+    margin: 0 auto;
+    gap: 10px;
+    font-size: 0.95rem;
+    line-height: 1.32;
+  }
+
+  #experiencias .info-section__list li {
+    padding-left: 28px;
+  }
+
+  #experiencias .info-section__image--reviews {
+    order: 4;
+    width: min(100%, 175px);
+    max-width: 175px;
+    max-height: 215px;
+    margin: 0 auto;
+  }
+
+  #experiencias .info-section__next {
+    order: 5;
+    margin-top: 2px;
+    padding-top: 0;
+  }
+
+  #experiencias .section-next-button {
+    width: 48px;
+    height: 48px;
+  }
+
+  #experiencias .section-next-button__icon {
+    width: 14px;
+    height: 14px;
+  }
+}
+
+@media (max-width: 767px) and (max-height: 740px) {
+  #experiencias.section-sheet {
+    padding-top: 14px;
+    padding-bottom: 14px;
+  }
+
+  #experiencias > .site-shell,
+  #experiencias .site-shell {
+    min-height: calc(100svh - var(--header-height-mobile) - 28px);
+  }
+
+  #experiencias .info-section__split {
+    max-width: 325px;
+    gap: 12px;
+  }
+
+  #experiencias .info-section__title {
+    max-width: 300px;
+    font-size: 1.85rem;
+    line-height: 1.12;
+  }
+
+  #experiencias .info-section__image--emoji {
+    width: min(100%, 145px);
+    max-width: 145px;
+    max-height: 145px;
+  }
+
+  #experiencias .info-section__list {
+    max-width: 285px;
+    gap: 9px;
+    font-size: 0.9rem;
+    line-height: 1.28;
+  }
+
+  #experiencias .info-section__image--reviews {
+    width: min(100%, 165px);
+    max-width: 165px;
+    max-height: 200px;
+  }
+
+  #experiencias .section-next-button {
+    width: 46px;
+    height: 46px;
   }
 }
