@@ -1,15 +1,23 @@
 ---
 import siteContent from "../config/site.json";
 
-const whatsappLink = siteContent.links.whatsapp;
+interface Props {
+  href?: string;
+  label?: string;
+}
+
+const {
+  href = siteContent.links.whatsapp,
+  label = "Contactar por WhatsApp"
+} = Astro.props;
 ---
 
 <a
-  href={whatsappLink}
+  href={href}
   class="floating-whatsapp"
   target="_blank"
   rel="noopener noreferrer"
-  aria-label="Contactar por WhatsApp"
+  aria-label={label}
 >
   <svg
     class="floating-whatsapp__icon"
