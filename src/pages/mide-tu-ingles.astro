@@ -2,6 +2,7 @@
 import MainLayout from "../layouts/MainLayout.astro";
 import Footer from "../components/Footer.astro";
 import NextSectionButton from "../components/NextSectionButton.astro";
+import MultilineText from "../components/MultilineText.astro";
 import mideTuInglesContent from "../config/pages/mide-tu-ingles.json";
 import "../styles/mide-tu-ingles.css";
 
@@ -13,14 +14,7 @@ const { hero, levelButtons, levelsA, levelsB, benefits } = mideTuInglesContent;
     <div class="site-shell test-hero">
       <div class="test-hero__content">
         <h1 class="test-hero__title">
-          {
-            hero.title.split("\n").map((line) => (
-              <>
-                {line}
-                <br />
-              </>
-            ))
-          }
+          <MultilineText text={hero.title} />
         </h1>
 
         <p class="test-hero__intro">{hero.intro}</p>
@@ -53,14 +47,7 @@ const { hero, levelButtons, levelsA, levelsB, benefits } = mideTuInglesContent;
     <div class="site-shell test-levels-a">
       <div class="test-levels-a__left">
         <h2 class="test-levels-a__title">
-          {
-            levelsA.title.split("\n").map((line) => (
-              <>
-                {line}
-                <br />
-              </>
-            ))
-          }
+          <MultilineText text={levelsA.title} />
         </h2>
 
         <p class="test-levels-a__intro">{levelsA.intro}</p>
@@ -190,14 +177,7 @@ const { hero, levelButtons, levelsA, levelsB, benefits } = mideTuInglesContent;
 
         <div class="test-benefits-final__right">
           <h2 class="test-benefits-final__title">
-            {
-              benefits.title.split("\n").map((line) => (
-                <>
-                  {line}
-                  <br />
-                </>
-              ))
-            }
+            <MultilineText text={benefits.title} />
           </h2>
 
           <ul class="test-benefits-final__list">

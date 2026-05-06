@@ -5,6 +5,7 @@ import siteContent from "../config/site.json";
 import homeContent from "../config/pages/home.json";
 import NextSectionButton from "../components/NextSectionButton.astro";
 import SectionSheet from "../components/SectionSheet.astro";
+import MultilineText from "../components/MultilineText.astro";
 
 const { links } = siteContent;
 const { home, sections } = homeContent;
@@ -111,12 +112,7 @@ const finalSection = sections[sections.length - 1];
 
         <div class="info-section__final-right">
           <h2 class="info-section__title">
-            {finalSection.title.split("\n").map((line) => (
-              <>
-                {line}
-                <br />
-              </>
-            ))}
+            <MultilineText text={finalSection.title} />
           </h2>
 
           <a href={links.inscribeteAhora} class="primary-cta">

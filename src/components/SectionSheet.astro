@@ -1,5 +1,6 @@
 ---
 import NextSectionButton from "./NextSectionButton.astro";
+import MultilineText from "./MultilineText.astro";
 
 type Variant = "standard" | "split" | "final";
 
@@ -35,7 +36,6 @@ const {
   ctaHref = "#"
 } = Astro.props;
 
-const titleLines = title.split("\n");
 ---
 
 <section id={id} class="section-sheet info-section">
@@ -44,12 +44,7 @@ const titleLines = title.split("\n");
       <div class="info-section__split">
         <div class="info-section__split-left">
           <h2 class="info-section__title">
-            {titleLines.map((line) => (
-              <>
-                {line}
-                <br />
-              </>
-            ))}
+            <MultilineText text={title} />
           </h2>
 
           {description && (
@@ -97,12 +92,7 @@ const titleLines = title.split("\n");
 
         <div class="info-section__final-right">
           <h2 class="info-section__title">
-            {titleLines.map((line) => (
-              <>
-                {line}
-                <br />
-              </>
-            ))}
+            <MultilineText text={title} />
           </h2>
 
           {ctaLabel && (
@@ -143,12 +133,7 @@ const titleLines = title.split("\n");
 
         <div class="info-section__content">
           <h2 class="info-section__title">
-            {titleLines.map((line) => (
-              <>
-                {line}
-                <br />
-              </>
-            ))}
+            <MultilineText text={title} />
           </h2>
 
           {description && (

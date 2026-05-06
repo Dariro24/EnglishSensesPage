@@ -2,6 +2,7 @@
 import MainLayout from "../layouts/MainLayout.astro";
 import Footer from "../components/Footer.astro";
 import NextSectionButton from "../components/NextSectionButton.astro";
+import MultilineText from "../components/MultilineText.astro";
 import "../styles/cursos.css";
 import siteContent from "../config/site.json";
 import cursosContent from "../config/pages/cursos.json";
@@ -46,12 +47,7 @@ const finalSection = sections[1];
     <div class="site-shell curso-split">
       <div class="curso-split__content">
         <h2 class="curso-split__title">
-          {firstSection.title.split("\n").map((line) => (
-            <>
-              {line}
-              <br />
-            </>
-          ))}
+          <MultilineText text={firstSection.title} />
         </h2>
 
         <div class="curso-split__text">
@@ -88,12 +84,7 @@ const finalSection = sections[1];
 
         <div class="curso-final__content">
           <h2 class="curso-final__title">
-            {finalSection.title.split("\n").map((line) => (
-              <>
-                {line}
-                <br />
-              </>
-            ))}
+            <MultilineText text={finalSection.title} />
           </h2>
 
           <ul class="curso-final__list">
