@@ -1,10 +1,65 @@
-@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap");
 @import "tailwindcss";
 @import "./header.css";
 @import "./pages.css";
 @import "./footer.css";
 @import "./sections.css";
 @import "./floating-whatsapp.css";
+
+@font-face {
+  font-family: "Quicksand";
+  src: url("/fonts/Quicksand-Light.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Quicksand";
+  src: url("/fonts/Quicksand-Regular.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Quicksand";
+  src: url("/fonts/Quicksand-Medium.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Quicksand";
+  src: url("/fonts/Quicksand-SemiBold.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Quicksand";
+  src: url("/fonts/Quicksand-Bold.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Hanken Grotesk";
+  src: url("/fonts/HankenGrotesk-VariableFont_wght.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Hanken Grotesk";
+  src: url("/fonts/HankenGrotesk-Italic-VariableFont_wght.ttf") format("truetype");
+  font-style: italic;
+  font-weight: 100 900;
+  font-display: swap;
+}
 
 :root {
   --color-primary: #004aad;
@@ -15,9 +70,11 @@
   --color-text-soft: #4b5563;
   --color-border: rgba(0, 74, 173, 0.14);
 
-  /* Fuente principal del sitio */
-  --font-sans: "Quicksand", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-    sans-serif;
+  --font-body: "Quicksand", system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+  --font-heading: "Hanken Grotesk", "Quicksand", system-ui, -apple-system,
+    BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-sans: var(--font-body);
 
   --fs-title-desktop: 42px;
   --fs-title-tablet: 34px;
@@ -45,28 +102,6 @@
   --bullet-icon-url: url("/media/shared/icons/bullet-check.png");
 }
 
-/* 
-   Puedes dejar estas font-face por ahora.
-   No molestan mientras pruebas Quicksand.
-   Si luego decides dejar Quicksand de forma definitiva,
-   puedes quitar estas dos reglas si ya no usas Hanken Grotesk.
-*/
-@font-face {
-  font-family: "Hanken Grotesk";
-  src: url("/fonts/HankenGrotesk-VariableFont_wght.ttf") format("truetype");
-  font-style: normal;
-  font-weight: 100 900;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Hanken Grotesk";
-  src: url("/fonts/HankenGrotesk-Italic-VariableFont_wght.ttf") format("truetype");
-  font-style: italic;
-  font-weight: 100 900;
-  font-display: swap;
-}
-
 *,
 *::before,
 *::after {
@@ -74,7 +109,7 @@
 }
 
 html {
-  font-family: var(--font-sans);
+  font-family: var(--font-body);
   background: var(--color-background);
   color: var(--color-text);
   scroll-behavior: smooth;
@@ -90,6 +125,7 @@ html {
 
 body {
   margin: 0;
+  font-family: var(--font-body);
   background: var(--color-background);
   color: var(--color-text);
 
@@ -115,6 +151,20 @@ input,
 textarea,
 select {
   font: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.primary-cta,
+.section-next-button,
+.test-level-button,
+.site-header,
+.site-footer {
+  font-family: var(--font-heading);
 }
 
 .site-shell {

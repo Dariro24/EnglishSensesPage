@@ -7,6 +7,11 @@ import mideTuInglesContent from "../config/pages/mide-tu-ingles.json";
 import "../styles/mide-tu-ingles.css";
 
 const { hero, levelButtons, levelsA, levelsB, benefits } = mideTuInglesContent;
+const levelA1 = levelsA.groups[0];
+const levelA2 = levelsA.groups[1];
+const levelA1Id = "nivel-a1";
+const levelA2Id = "nivel-a2";
+const decorativeArrow = "/media/home/hero/arrow.webp";
 ---
 
 <MainLayout title="Mide tu inglés" showFooter={false}>
@@ -38,8 +43,12 @@ const { hero, levelButtons, levelsA, levelsB, benefits } = mideTuInglesContent;
       </div>
     </div>
 
-    <div class="test-section__next">
+    <div class="test-section__next test-section__next--desktop">
       <NextSectionButton target={`#${levelsA.id}`} />
+    </div>
+
+    <div class="test-section__next test-section__next--mobile-tablet">
+      <NextSectionButton target={`#${levelA1Id}`} />
     </div>
   </section>
 
@@ -93,6 +102,88 @@ const { hero, levelButtons, levelsA, levelsB, benefits } = mideTuInglesContent;
     </div>
   </section>
 
+  <section id={levelA1Id} class="test-section test-section--level-a1">
+    <div class="site-shell test-level-single">
+      <div class="test-level-single__intro">
+        <h2 class="test-levels-a__title">
+          <MultilineText text={levelsA.title} />
+        </h2>
+
+        <p class="test-levels-a__intro">{levelsA.intro}</p>
+      </div>
+
+      <div class="test-level-group">
+        <h3 class="test-level-group__heading">{levelA1.heading}</h3>
+        <ul class="test-level-group__list">
+          {levelA1.items.map((item) => (
+            <li>{item}</li>
+          ))}
+        </ul>
+      </div>
+
+      <p class="test-level-single__selector-text">{levelsA.selectorText}</p>
+
+      <img
+        src={decorativeArrow}
+        alt=""
+        class="test-level-decorative-arrow"
+        aria-hidden="true"
+      />
+
+      <div class="test-level-single__button-wrap">
+        <a
+          href={levelButtons[0].href.trim()}
+          class="test-level-button"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {levelButtons[0].label}
+        </a>
+      </div>
+    </div>
+
+    <div class="test-section__next">
+      <NextSectionButton target={`#${levelA2Id}`} />
+    </div>
+  </section>
+
+  <section id={levelA2Id} class="test-section test-section--level-a2">
+    <div class="site-shell test-level-single">
+      <div class="test-level-group">
+        <h3 class="test-level-group__heading">{levelA2.heading}</h3>
+        <ul class="test-level-group__list">
+          {levelA2.items.map((item) => (
+            <li>{item}</li>
+          ))}
+        </ul>
+      </div>
+
+      <p class="test-level-single__selector-text">{levelsA.selectorText}</p>
+
+      <img
+        src={decorativeArrow}
+        alt=""
+        class="test-level-decorative-arrow"
+        aria-hidden="true"
+      />
+
+      <div class="test-level-single__button-wrap">
+        <a
+          href={levelButtons[1].href.trim()}
+          class="test-level-button"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {levelButtons[1].label}
+        </a>
+      </div>
+    </div>
+
+    <div class="test-section__next">
+      <NextSectionButton target={`#${levelsB.id}`} />
+    </div>
+  </section>
+
   <section id={levelsB.id} class="test-section test-section--levels-b">
     <div class="site-shell test-levels-b">
       <div class="test-levels-b__top">
@@ -118,7 +209,14 @@ const { hero, levelButtons, levelsA, levelsB, benefits } = mideTuInglesContent;
       <div class="test-levels-b__bottom">
         <p class="test-levels-b__selector-text">{levelsB.selectorText}</p>
 
-        <div class="test-level-buttons test-level-buttons--horizontal">
+        <img
+          src={decorativeArrow}
+          alt=""
+          class="test-level-decorative-arrow"
+          aria-hidden="true"
+        />
+
+        <div class="test-level-buttons test-level-buttons--horizontal test-level-buttons--desktop">
           {
             levelButtons.map((button) => (
               <a
@@ -131,6 +229,17 @@ const { hero, levelButtons, levelsA, levelsB, benefits } = mideTuInglesContent;
               </a>
             ))
           }
+        </div>
+
+        <div class="test-level-buttons test-level-buttons--horizontal test-level-buttons--mobile">
+          <a
+            href={levelButtons[2].href.trim()}
+            class="test-level-button"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {levelButtons[2].label}
+          </a>
         </div>
 
         <p class="test-levels-b__cta-text">{levelsB.ctaText}</p>
@@ -155,11 +264,11 @@ const { hero, levelButtons, levelsA, levelsB, benefits } = mideTuInglesContent;
             decoding="async"
           />
 
-          <p class="test-benefits-final__selector-text">
+          <p class="test-benefits-final__selector-text test-benefits-final__selector-text--levels">
             {benefits.selectorText}
           </p>
 
-          <div class="test-level-buttons test-level-buttons--horizontal">
+          <div class="test-level-buttons test-level-buttons--horizontal test-benefits-final__level-buttons">
             {
               levelButtons.map((button) => (
                 <a
