@@ -963,13 +963,13 @@
 @media (max-width: 767px) {
   #niveles-b {
     display: grid;
-    grid-template-rows: minmax(0, auto) auto;
+    grid-template-rows: auto auto;
     align-content: center;
     justify-items: center;
-    row-gap: 8px;
+    row-gap: 12px;
     min-height: calc(100svh - var(--header-height-mobile));
-    padding-top: 8px;
-    padding-bottom: 8px;
+    padding-top: 10px;
+    padding-bottom: 10px;
   }
 
   #niveles-b > .site-shell {
@@ -979,11 +979,11 @@
   }
 
   #niveles-b .test-levels-b {
-    width: min(100%, 340px);
+    width: min(100%, 356px);
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 8px;
+    align-items: stretch;
+    gap: 12px;
     padding-top: 0;
     text-align: left;
   }
@@ -1001,20 +1001,20 @@
     width: 100%;
     display: grid;
     grid-template-columns: 1fr;
-    gap: 8px;
+    gap: 12px;
   }
 
   #niveles-b .test-levels-b__intro {
     order: 2;
     margin: 0;
-    font-size: 0.86rem;
-    line-height: 1.2;
+    font-size: 0.94rem;
+    line-height: 1.24;
     text-align: center;
   }
 
   #niveles-b .test-levels-b__bottom {
     order: 3;
-    gap: 6px;
+    gap: 8px;
   }
 
   #niveles-b .test-levels-b__selector-text,
@@ -1028,8 +1028,11 @@
   }
 
   #niveles-b .test-level-group__heading {
-    font-size: 1rem;
-    line-height: 1.1;
+    font-size: 1.2rem;
+    line-height: 1.08;
+    font-weight: 700;
+    color: var(--color-primary);
+    text-align: center;
   }
 
   #niveles-b .test-level-group__list {
@@ -1037,13 +1040,13 @@
   }
 
   #niveles-b .test-level-group__list li {
-    font-size: 0.82rem;
-    line-height: 1.18;
-    padding-left: 21px;
+    font-size: 0.92rem;
+    line-height: 1.22;
+    padding-left: 22px;
   }
 
   #niveles-b .test-level-decorative-arrow {
-    width: 72px;
+    width: 80px;
     margin: 0 auto;
     transform: rotate(90deg);
     transform-origin: center;
@@ -1051,21 +1054,50 @@
 
   #niveles-b .test-level-button {
     min-width: 150px;
-    min-height: 40px;
-    font-size: 1rem;
+    min-height: 44px;
+    font-size: 1.05rem;
   }
 
   #niveles-b > .test-section__next {
     display: flex;
     flex: 0 0 auto;
     width: 100%;
-    min-height: 42px;
+    min-height: 46px;
     justify-content: center;
     align-items: center;
     margin-top: 0;
     padding-top: 0;
     align-self: center;
     justify-self: center;
+  }
+}
+
+@media (max-width: 767px) and (min-height: 800px) {
+  #niveles-b {
+    row-gap: 12px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+
+  #niveles-b .test-levels-b {
+    width: min(100%, 360px);
+    gap: 12px;
+  }
+
+  #niveles-b .test-levels-b__grid {
+    gap: 12px;
+  }
+
+  #niveles-b .test-levels-b__bottom {
+    gap: 9px;
+  }
+
+  #niveles-b .test-level-decorative-arrow {
+    width: 84px;
+  }
+
+  #niveles-b > .test-section__next {
+    min-height: 48px;
   }
 }
 
