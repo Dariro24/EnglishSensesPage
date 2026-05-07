@@ -319,7 +319,10 @@
 }
 
 .test-section--level-a1,
-.test-section--level-a2,
+.test-section--level-a2 {
+  display: none;
+}
+
 .test-section__next--mobile-tablet {
   display: none;
 }
@@ -875,8 +878,7 @@
 }
 
 @media (min-width: 992px) {
-  #nivel-a1,
-  #nivel-a2,
+  :is(#nivel-a1, #nivel-a2),
   .test-section__next--mobile-tablet,
   .test-level-buttons--mobile {
     display: none;
@@ -890,8 +892,7 @@
     display: none;
   }
 
-  #nivel-a1,
-  #nivel-a2 {
+  :is(#nivel-a1, #nivel-a2) {
     display: grid;
   }
 
