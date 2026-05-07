@@ -353,28 +353,6 @@
 }
 
 @media (max-width: 991px) {
-  .test-section--levels-a,
-  .test-section__next--desktop {
-    display: none;
-  }
-
-  .test-section--level-a1,
-  .test-section--level-a2 {
-    display: flex;
-  }
-
-  .test-section__next--mobile-tablet {
-    display: flex;
-  }
-
-  .test-level-buttons--desktop {
-    display: none;
-  }
-
-  .test-level-buttons--mobile {
-    display: flex;
-  }
-
   #beneficios-test .test-benefits-final__selector-text--levels,
   #beneficios-test .test-benefits-final__level-buttons,
   #beneficios-test .test-level-decorative-arrow {
@@ -898,19 +876,28 @@
 
 @media (min-width: 992px) {
   #nivel-a1,
-  #nivel-a2 {
+  #nivel-a2,
+  .test-section__next--mobile-tablet,
+  .test-level-buttons--mobile {
     display: none;
   }
 }
 
 @media (max-width: 991px) {
-  #niveles-a {
+  #niveles-a,
+  .test-section__next--desktop,
+  .test-level-buttons--desktop {
     display: none;
   }
 
   #nivel-a1,
   #nivel-a2 {
     display: grid;
+  }
+
+  .test-section__next--mobile-tablet,
+  .test-level-buttons--mobile {
+    display: flex;
   }
 }
 
