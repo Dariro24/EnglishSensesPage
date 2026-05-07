@@ -492,8 +492,7 @@
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
-  #nivel-a1,
-  #nivel-a2,
+  :is(#nivel-a1, #nivel-a2),
   #niveles-b {
     display: grid;
     grid-template-rows: auto auto;
@@ -503,8 +502,7 @@
     min-height: calc(100svh - var(--header-height-tablet));
   }
 
-  #nivel-a1 > .site-shell,
-  #nivel-a2 > .site-shell,
+  :is(#nivel-a1, #nivel-a2) > .site-shell,
   #niveles-b > .site-shell {
     width: 100%;
     min-height: auto;
@@ -522,8 +520,7 @@
     transform-origin: center;
   }
 
-  #nivel-a1 > .test-section__next,
-  #nivel-a2 > .test-section__next,
+  :is(#nivel-a1, #nivel-a2) > .test-section__next,
   #niveles-b > .test-section__next {
     display: flex;
     flex: 0 0 auto;
@@ -679,8 +676,7 @@
 }
 
 @media (max-width: 767px) {
-  #nivel-a1,
-  #nivel-a2,
+  :is(#nivel-a1, #nivel-a2),
   #niveles-b {
     display: grid;
     grid-template-rows: auto auto;
@@ -690,8 +686,7 @@
     min-height: calc(100svh - var(--header-height-mobile));
   }
 
-  #nivel-a1 > .site-shell,
-  #nivel-a2 > .site-shell,
+  :is(#nivel-a1, #nivel-a2) > .site-shell,
   #niveles-b > .site-shell {
     width: 100%;
     min-height: auto;
@@ -709,8 +704,7 @@
     transform-origin: center;
   }
 
-  #nivel-a1 > .test-section__next,
-  #nivel-a2 > .test-section__next,
+  :is(#nivel-a1, #nivel-a2) > .test-section__next,
   #niveles-b > .test-section__next {
     display: flex;
     flex: 0 0 auto;
