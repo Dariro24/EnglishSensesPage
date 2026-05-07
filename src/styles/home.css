@@ -265,8 +265,8 @@
 @media (max-width: 767px) {
   .home-hero.section-sheet {
     min-height: calc(100vh - var(--header-height-mobile));
-    padding-top: 8px;
-    padding-bottom: 22px;
+    padding-top: 10px;
+    padding-bottom: 14px;
     scroll-margin-top: var(--header-height-mobile);
   }
 
@@ -276,7 +276,9 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 12px;
+    justify-content: center;
+    gap: 10px;
+    min-height: calc(100svh - var(--header-height-mobile) - 24px);
     position: relative; /* necesario para el absolute de la flecha */
   }
 
@@ -290,7 +292,7 @@
   }
 
   .home-hero__message-image {
-    width: min(100%, 300px);
+    width: min(100%, 320px);
     height: auto;
     display: block;
   }
@@ -307,8 +309,8 @@
   }
 
   .home-hero__character {
-    width: 200px;
-    max-height: 230px;
+    width: 230px;
+    max-height: 260px;
     height: auto;
     object-fit: contain;
     display: block;
@@ -321,8 +323,8 @@
      y cae verticalmente hacia el botón */
   .home-hero__arrow-wrap {
     position: absolute;
-    left: calc(50% + 60px);  
-    top: 220px;              
+    left: calc(50% + 68px);
+    top: 236px;
     width: 80px;
     height: auto;
     pointer-events: none;
@@ -333,7 +335,7 @@
   }
 
   .home-hero__arrow-gif {
-    width: 100px;
+    width: 96px;
     height: auto;
     display: block;
     object-fit: contain;
@@ -360,18 +362,18 @@
   /* 4) DESCRIPCIÓN */
   .home-hero__description {
     order: 4;
-    max-width: 330px;
+    max-width: 340px;
     margin: 0 auto;
     text-align: center;
     font-size: 0.95rem;
-    line-height: 1.45;
+    line-height: 1.4;
   }
 
   /* 5) BOTÓN SIGUIENTE */
   .home-hero__actions {
     order: 5;
     width: 100%;
-    margin-top: 2px;
+    margin-top: 0;
     display: flex;
     justify-content: center;
     align-items: center;
