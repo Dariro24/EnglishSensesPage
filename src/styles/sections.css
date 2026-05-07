@@ -588,6 +588,39 @@
   }
 }
 
+@media (min-width: 768px) and (max-width: 991px) {
+  .section-sheet:not(.section-sheet--final):not(.home-hero),
+  .curso-section:not(.curso-section--final),
+  .servicio-section:not(.servicio-section--final),
+  .test-section:not(.test-section--benefits-final) {
+    min-height: calc(100svh - var(--header-height-tablet));
+    padding-top: 18px;
+    padding-bottom: 18px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .section-sheet:not(.section-sheet--final):not(.home-hero) > .site-shell,
+  .curso-section:not(.curso-section--final) > .site-shell:not(.curso-final__shell),
+  .servicio-section:not(.servicio-section--final) > .site-shell:not(.servicio-final__shell),
+  .test-section:not(.test-section--benefits-final) > .site-shell:not(.test-benefits-final__shell) {
+    min-height: 0;
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .info-section__next,
+  .curso-section__next,
+  .servicio-section__next,
+  .test-section__next {
+    flex: 0 0 auto;
+    margin-top: 0;
+    padding-top: 16px;
+  }
+}
+
 /* =========================================================
    MOBILE GENERAL
    ========================================================= */

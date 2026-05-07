@@ -5,6 +5,7 @@
     "description": "Clases en vivo con profesores cualificados, material interactivo y seguimiento personalizado.",
     "primaryButtonLabel": "Inscríbete Ahora",
     "heroCharacter": "/media/home/hero/hero-personaje.webp",
+    "heroCharacterResponsive": "/media/home/hero/hero-personaje.webp",
     "arrowGif": "/media/home/hero/arrow.webp"
   },
   "sections": [

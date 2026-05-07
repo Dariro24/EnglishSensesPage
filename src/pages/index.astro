@@ -18,14 +18,20 @@ const finalSection = sections[sections.length - 1];
   <section id="home" class="home-hero section-sheet">
     <div class="site-shell home-hero__inner">
       <div class="home-hero__character-wrap">
-        <img
-          src={home.heroCharacter}
-          alt="Personaje principal"
-          class="home-hero__character"
-          loading="eager"
-          decoding="async"
-          fetchpriority="high"
-        />
+        <picture>
+          <source
+            media="(max-width: 991px)"
+            srcset={home.heroCharacterResponsive ?? home.heroCharacter}
+          />
+          <img
+            src={home.heroCharacter}
+            alt="Personaje principal"
+            class="home-hero__character"
+            loading="eager"
+            decoding="async"
+            fetchpriority="high"
+          />
+        </picture>
       </div>
 
       <div class="home-hero__message-wrap">

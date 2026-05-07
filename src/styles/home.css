@@ -39,6 +39,10 @@
   position: relative;
 }
 
+.home-hero__character-wrap picture {
+  display: block;
+}
+
 .home-hero__character {
   width: 500px;
   max-width: none;
@@ -232,8 +236,7 @@
   }
 
   .home-hero__arrow-wrap {
-    transform: none;
-    justify-content: center;
+    display: none;
   }
 
   .home-hero__arrow-gif {
@@ -261,6 +264,82 @@
    5) descripción
    6) siguiente
    ========================================================= */
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .home-hero.section-sheet {
+    min-height: calc(100svh - var(--header-height-tablet));
+    padding-top: 18px;
+    padding-bottom: 18px;
+  }
+
+  .home-hero__inner {
+    width: min(100%, 620px);
+    min-height: calc(100svh - var(--header-height-tablet) - 36px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+  }
+
+  .home-hero__message-wrap {
+    order: 1;
+    width: 100%;
+    margin: 0;
+    justify-content: center;
+  }
+
+  .home-hero__message-image {
+    width: min(100%, 520px);
+    max-width: 520px;
+  }
+
+  .home-hero__character-wrap {
+    order: 2;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .home-hero__character-wrap picture {
+    display: block;
+  }
+
+  .home-hero__character {
+    width: min(100%, 360px);
+    max-height: 380px;
+  }
+
+  .home-hero__cta-wrap {
+    order: 3;
+    width: 100%;
+    margin: 0;
+    justify-content: center;
+  }
+
+  .home-hero__cta-wrap .primary-cta {
+    min-width: 0;
+    width: min(100%, 360px);
+  }
+
+  .home-hero__description {
+    order: 4;
+    max-width: 520px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .home-hero__actions {
+    order: 5;
+    width: 100%;
+    margin-top: 0;
+    justify-content: center;
+  }
+
+  .home-hero__arrow-wrap {
+    display: none;
+  }
+}
 
 @media (max-width: 767px) {
   .home-hero.section-sheet {
@@ -322,16 +401,7 @@
      arranca desde la mano del personaje (derecha del personaje)
      y cae verticalmente hacia el botón */
   .home-hero__arrow-wrap {
-    position: absolute;
-    left: calc(50% + 68px);
-    top: 236px;
-    width: 80px;
-    height: auto;
-    pointer-events: none;
-    z-index: 3;
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
+    display: none;
   }
 
   .home-hero__arrow-gif {

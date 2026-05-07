@@ -2,7 +2,7 @@ node_modules/
 dist/
 .astro/
 .vscode/*.log
-
+AGENTS.md
 **/Copias/
 **/Copias/**
 **/copias/
