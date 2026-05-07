@@ -11,6 +11,9 @@ const levelA1 = levelsA.groups[0];
 const levelA2 = levelsA.groups[1];
 const levelA1Id = "nivel-a1";
 const levelA2Id = "nivel-a2";
+const levelButtonA1 = levelButtons[0];
+const levelButtonA2 = levelButtons[1];
+const levelButtonB1 = levelButtons[2];
 const decorativeArrow = "/media/home/hero/arrow.webp";
 ---
 
@@ -132,12 +135,12 @@ const decorativeArrow = "/media/home/hero/arrow.webp";
 
       <div class="test-level-single__button-wrap">
         <a
-          href={levelButtons[0].href.trim()}
+          href={levelButtonA1.href.trim()}
           class="test-level-button"
           target="_blank"
           rel="noopener noreferrer"
         >
-          {levelButtons[0].label}
+          {levelButtonA1.label}
         </a>
       </div>
     </div>
@@ -169,12 +172,12 @@ const decorativeArrow = "/media/home/hero/arrow.webp";
 
       <div class="test-level-single__button-wrap">
         <a
-          href={levelButtons[1].href.trim()}
+          href={levelButtonA2.href.trim()}
           class="test-level-button"
           target="_blank"
           rel="noopener noreferrer"
         >
-          {levelButtons[1].label}
+          {levelButtonA2.label}
         </a>
       </div>
     </div>
@@ -233,12 +236,12 @@ const decorativeArrow = "/media/home/hero/arrow.webp";
 
         <div class="test-level-buttons test-level-buttons--horizontal test-level-buttons--mobile">
           <a
-            href={levelButtons[2].href.trim()}
+            href={levelButtonB1.href.trim()}
             class="test-level-button"
             target="_blank"
             rel="noopener noreferrer"
           >
-            {levelButtons[2].label}
+            {levelButtonB1.label}
           </a>
         </div>
 
