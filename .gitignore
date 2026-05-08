@@ -7,3 +7,8 @@ AGENTS.md
 **/Copias/**
 **/copias/
 **/copias/**
+
+# Codex / AutoSkills 
+.agents/skills/
+.codex/skills/
+skills-lock.json
