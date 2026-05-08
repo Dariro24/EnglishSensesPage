@@ -42,38 +42,40 @@ const calendarioLink = serviciosLinks.Calendario;
   </section>
 
   <section id={tutorias.id} class="servicio-section servicio-section--content">
-    <div class="site-shell servicio-card servicio-card--left-media">
-      <div class="servicio-card__media-block">
-        <img
-          src={tutorias.image}
-          alt={tutorias.imageAlt}
-          class="servicio-card__image"
-        />
+    <div class="site-shell">
+      <div class="servicio-card servicio-card--left-media">
+        <div class="servicio-card__media-block">
+          <img
+            src={tutorias.image}
+            alt={tutorias.imageAlt}
+            class="servicio-card__image"
+          />
 
-        <p class="servicio-card__promo">{tutorias.ctaText}</p>
+          <p class="servicio-card__promo">{tutorias.ctaText}</p>
 
-        <a href={calendarioLink} class="primary-cta servicio-card__cta" target="_blank" rel="noopener noreferrer">
-          {tutorias.ctaLabel}
-        </a>
+          <a href={calendarioLink} class="primary-cta servicio-card__cta" target="_blank" rel="noopener noreferrer">
+            {tutorias.ctaLabel}
+          </a>
 
-        <p class="servicio-card__note">
-          {tutorias.note.split("\n").map((line) => (
-            <>
-              {line}
-              <br />
-            </>
-          ))}
-        </p>
-      </div>
+          <p class="servicio-card__note">
+            {tutorias.note.split("\n").map((line) => (
+              <>
+                {line}
+                <br />
+              </>
+            ))}
+          </p>
+        </div>
 
-      <div class="servicio-card__content">
-        <h2 class="servicio-card__title">{tutorias.title}</h2>
+        <div class="servicio-card__content">
+          <h2 class="servicio-card__title">{tutorias.title}</h2>
 
-        <ul class="servicio-card__list">
-          {tutorias.bullets.map((item) => (
-            <li>{item}</li>
-          ))}
-        </ul>
+          <ul class="servicio-card__list">
+            {tutorias.bullets.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+        </div>
       </div>
     </div>
 
@@ -83,38 +85,40 @@ const calendarioLink = serviciosLinks.Calendario;
   </section>
 
   <section id={asesorias.id} class="servicio-section servicio-section--content">
-    <div class="site-shell servicio-card servicio-card--right-media">
-      <div class="servicio-card__content">
-        <h2 class="servicio-card__title">{asesorias.title}</h2>
+    <div class="site-shell">
+      <div class="servicio-card servicio-card--right-media">
+        <div class="servicio-card__content">
+          <h2 class="servicio-card__title">{asesorias.title}</h2>
 
-        <ul class="servicio-card__list">
-          {asesorias.bullets.map((item) => (
-            <li>{item}</li>
-          ))}
-        </ul>
-      </div>
+          <ul class="servicio-card__list">
+            {asesorias.bullets.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+        </div>
 
-      <div class="servicio-card__media-block">
-        <img
-          src={asesorias.image}
-          alt={asesorias.imageAlt}
-          class="servicio-card__image"
-        />
+        <div class="servicio-card__media-block">
+          <img
+            src={asesorias.image}
+            alt={asesorias.imageAlt}
+            class="servicio-card__image"
+          />
 
-        <p class="servicio-card__promo">{asesorias.ctaText}</p>
+          <p class="servicio-card__promo">{asesorias.ctaText}</p>
 
-        <a href={calendarioLink} class="primary-cta servicio-card__cta" target="_blank" rel="noopener noreferrer">
-          {asesorias.ctaLabel}
-        </a>
+          <a href={calendarioLink} class="primary-cta servicio-card__cta" target="_blank" rel="noopener noreferrer">
+            {asesorias.ctaLabel}
+          </a>
 
-        <p class="servicio-card__note">
-          {asesorias.note.split("\n").map((line) => (
-            <>
-              {line}
-              <br />
-            </>
-          ))}
-        </p>
+          <p class="servicio-card__note">
+            {asesorias.note.split("\n").map((line) => (
+              <>
+                {line}
+                <br />
+              </>
+            ))}
+          </p>
+        </div>
       </div>
     </div>
 

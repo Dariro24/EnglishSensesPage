@@ -6,6 +6,10 @@
       "Mi compromiso es brindarte una experiencia de aprendizaje que realmente funcione, basada en la práctica y el acompañamiento constante. Quiero que cada estudiante se sienta seguro y motivado para alcanzar sus metas.",
       "En nuestra escuela de inglés, creemos que aprender un nuevo idioma no tiene por qué ser complicado. Nuestro enfoque simplificado, práctico, dinámico y 100% en vivo te ayuda a hablar inglés con confianza."
     ],
+    "mobileParagraphs": [
+      "¡Hola! Soy Jean Wilson, fundador de English Senses. Creamos una forma práctica, cercana y 100% en vivo para aprender inglés sin complicaciones.",
+      "Te acompañamos con método, confianza y seguimiento para que avances a tu ritmo y hables inglés con seguridad."
+    ],
     "image": "/media/nosotros/hero/fundador.webp",
     "imageAlt": "Fundador de English Senses"
   },
@@ -21,11 +25,19 @@
           "En English Senses, el inglés se aprende con conexión, empatía y sin presiones. Nuestro método revolucionario hace que hablar inglés sea más fácil, dinámico y motivante.",
           "Aprendes usándolo desde el primer día, sin miedo y con confianza.",
           "Porque el inglés no solo se estudia, ¡se vive! “English day by day”"
+        ],
+        "mobileParagraphs":[
+          "En English Senses, el inglés se aprende con conexión, empatía y sin presiones. Nuestro método revolucionario hace que hablar inglés sea más fácil, dinámico y motivante. Aprendes usándolo desde el primer día, sin miedo y con confianza.",
+          "Porque el inglés no solo se estudia, ¡se vive! “English day by day”"
         ]
       },
       "right": {
         "title": "¿Qué nos motiva?",
         "paragraphs": [
+          "Queremos romper las barreras del aprendizaje tradicional y ofrecerte una experiencia dinámica, accesible y efectiva.",
+          "Con clases en grupos pequeños y una metodología de inmersión, así garantizamos que cada estudiante reciba la atención y el apoyo que necesita para avanzar."
+        ],
+        "mobileParagraphs": [
           "Queremos romper las barreras del aprendizaje tradicional y ofrecerte una experiencia dinámica, accesible y efectiva.",
           "Con clases en grupos pequeños y una metodología de inmersión, así garantizamos que cada estudiante reciba la atención y el apoyo que necesita para avanzar."
         ],

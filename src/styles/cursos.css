@@ -292,3 +292,307 @@
     font-size: 18px;
   }
 }
+
+@media (max-width: 767px) {
+  #curso-giving-tools {
+    min-height: calc(100svh - var(--header-height-mobile));
+    display: grid;
+    grid-template-rows: minmax(0, auto) auto;
+    align-content: center;
+    justify-items: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    row-gap: 8px;
+  }
+
+  #curso-giving-tools > .site-shell {
+    width: 100%;
+    min-height: auto;
+    flex: initial;
+  }
+
+  #curso-giving-tools .curso-hero {
+    width: min(100%, 340px);
+    gap: 10px;
+  }
+
+  #curso-giving-tools .curso-hero__title {
+    font-size: 1.95rem;
+    line-height: 1.05;
+  }
+
+  #curso-giving-tools .curso-hero__lead,
+  #curso-giving-tools .curso-hero__closing {
+    font-size: 0.9rem;
+    line-height: 1.25;
+  }
+
+  #curso-giving-tools .curso-hero__list {
+    gap: 7px;
+  }
+
+  #curso-giving-tools .curso-hero__list li {
+    font-size: 0.86rem;
+    line-height: 1.22;
+    padding-left: 24px;
+  }
+
+  #curso-giving-tools .curso-section__next {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0;
+    padding-top: 0;
+    min-height: 44px;
+  }
+}
+
+@media (max-width: 767px) and (max-height: 740px) {
+  #curso-giving-tools {
+    padding-top: 8px;
+    padding-bottom: 8px;
+    row-gap: 6px;
+  }
+
+  #curso-giving-tools .curso-hero {
+    gap: 7px;
+  }
+
+  #curso-giving-tools .curso-hero__title {
+    font-size: 1.75rem;
+    line-height: 1.03;
+  }
+
+  #curso-giving-tools .curso-hero__lead,
+  #curso-giving-tools .curso-hero__closing {
+    font-size: 0.82rem;
+    line-height: 1.18;
+  }
+
+  #curso-giving-tools .curso-hero__list {
+    gap: 5px;
+  }
+
+  #curso-giving-tools .curso-hero__list li {
+    font-size: 0.76rem;
+    line-height: 1.14;
+    padding-left: 22px;
+  }
+
+  #curso-giving-tools .curso-section__next {
+    min-height: 40px;
+  }
+}
+
+@media (max-width: 767px) {
+  #modalidad-horarios {
+    min-height: calc(100svh - var(--header-height-mobile));
+    display: flex;
+    flex-direction: column;
+    padding-top: 10px;
+    padding-bottom: 0;
+  }
+
+  #modalidad-horarios > .curso-final__shell {
+    width: 100%;
+    min-height: auto;
+    flex: 1 1 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 10px;
+  }
+
+  #modalidad-horarios .curso-final {
+    width: min(100%, 340px);
+    gap: 10px;
+  }
+
+  #modalidad-horarios .curso-final__media {
+    display: flex;
+    justify-content: center;
+  }
+
+  #modalidad-horarios .curso-final__image {
+    width: min(100%, 185px);
+    max-height: 190px;
+    object-fit: contain;
+  }
+
+  #modalidad-horarios .curso-final__title {
+    font-size: 1.9rem;
+    line-height: 1.05;
+  }
+
+  #modalidad-horarios .curso-final__list {
+    gap: 7px;
+  }
+
+  #modalidad-horarios .curso-final__list li {
+    font-size: 0.84rem;
+    line-height: 1.18;
+    padding-left: 22px;
+  }
+
+  #modalidad-horarios .curso-final__cta,
+  #modalidad-horarios .curso-final__cta-text,
+  #modalidad-horarios .curso-final__note {
+    font-size: 0.82rem;
+    line-height: 1.18;
+  }
+
+  #modalidad-horarios .curso-section__footer {
+    flex: 0 0 auto;
+    margin-top: 0;
+  }
+}
+
+@media (max-width: 767px) and (max-height: 740px) {
+  #modalidad-horarios {
+    padding-top: 8px;
+  }
+
+  #modalidad-horarios > .curso-final__shell {
+    padding-bottom: 6px;
+  }
+
+  #modalidad-horarios .curso-final {
+    gap: 7px;
+  }
+
+  #modalidad-horarios .curso-final__image {
+    width: min(100%, 155px);
+    max-height: 160px;
+  }
+
+  #modalidad-horarios .curso-final__title {
+    font-size: 1.65rem;
+    line-height: 1.03;
+  }
+
+  #modalidad-horarios .curso-final__list {
+    gap: 5px;
+  }
+
+  #modalidad-horarios .curso-final__list li {
+    font-size: 0.76rem;
+    line-height: 1.12;
+    padding-left: 20px;
+  }
+
+  #modalidad-horarios .curso-final__cta,
+  #modalidad-horarios .curso-final__cta-text,
+  #modalidad-horarios .curso-final__note {
+    font-size: 0.74rem;
+    line-height: 1.1;
+  }
+}
+
+@media (max-width: 767px) {
+  #para-quien-es {
+    min-height: calc(100svh - var(--header-height-mobile));
+    display: grid;
+    grid-template-rows: minmax(0, auto) auto;
+    align-content: center;
+    justify-items: center;
+    row-gap: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  #para-quien-es > .site-shell {
+    width: 100%;
+    min-height: auto;
+    flex: initial;
+  }
+
+  #para-quien-es .curso-split {
+    width: min(100%, 340px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    text-align: center;
+  }
+
+  #para-quien-es .curso-split__title {
+    font-size: 2rem;
+    line-height: 1.04;
+    margin-bottom: 2px;
+  }
+
+  #para-quien-es .curso-split__text {
+    width: 100%;
+    display: grid;
+    gap: 8px;
+    text-align: left;
+  }
+
+  #para-quien-es .curso-split__text p {
+    font-size: 0.92rem;
+    line-height: 1.28;
+    margin: 0;
+  }
+
+  #para-quien-es .curso-split__media {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
+  #para-quien-es .curso-split__image,
+  #para-quien-es img {
+    width: min(100%, 210px);
+    max-height: 210px;
+    object-fit: contain;
+    height: auto;
+  }
+
+  #para-quien-es > .curso-section__next {
+    display: flex;
+    width: 100%;
+    min-height: 44px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0;
+    padding-top: 0;
+  }
+}
+
+@media (max-width: 767px) and (max-height: 740px) {
+  #para-quien-es {
+    row-gap: 8px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+
+  #para-quien-es .curso-split {
+    width: min(100%, 332px);
+    gap: 8px;
+  }
+
+  #para-quien-es .curso-split__title {
+    font-size: 1.8rem;
+    line-height: 1.02;
+  }
+
+  #para-quien-es .curso-split__text {
+    gap: 6px;
+  }
+
+  #para-quien-es .curso-split__text p {
+    font-size: 0.86rem;
+    line-height: 1.2;
+  }
+
+  #para-quien-es .curso-split__image,
+  #para-quien-es img {
+    width: min(100%, 180px);
+    max-height: 180px;
+  }
+
+  #para-quien-es > .curso-section__next {
+    min-height: 40px;
+  }
+}

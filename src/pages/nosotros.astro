@@ -8,6 +8,9 @@ import nosotrosContent from "../config/pages/nosotros.json";
 const { intro, sections } = nosotrosContent;
 const firstSection = sections[0];
 const lastSection = sections[sections.length - 1];
+const visionScrollTargetId = "mision-vision-scroll";
+const motivaMobileId = "que-nos-motiva";
+const hacemosMobileId = "como-lo-hacemos";
 ---
 
 <MainLayout title="Nosotros" showFooter={false}>
@@ -17,8 +20,14 @@ const lastSection = sections[sections.length - 1];
         <div class="nosotros-intro__content">
           <h1 class="nosotros-intro__title">{intro.title}</h1>
 
-          <div class="nosotros-intro__text">
+          <div class="nosotros-intro__text nosotros-copy--desktop">
             {intro.paragraphs.map((paragraph) => (
+              <p>{paragraph}</p>
+            ))}
+          </div>
+
+          <div class="nosotros-intro__text nosotros-copy--mobile-tablet">
+            {(intro.mobileParagraphs ?? intro.paragraphs).map((paragraph) => (
               <p>{paragraph}</p>
             ))}
           </div>
@@ -33,8 +42,12 @@ const lastSection = sections[sections.length - 1];
         </div>
       </div>
 
-      <div class="nosotros-section__next">
+      <div class="nosotros-section__next nosotros-section__next--desktop">
         <NextSectionButton target={`#${firstSection.id}`} />
+      </div>
+
+      <div class="nosotros-section__next nosotros-section__next--mobile-tablet">
+        <NextSectionButton target={`#${motivaMobileId}`} />
       </div>
     </div>
   </section>
@@ -77,14 +90,79 @@ const lastSection = sections[sections.length - 1];
         class="nosotros-dual__image--puzzle"
       />
 
-      <div class="nosotros-section__next nosotros-dual__next">
-        <NextSectionButton target={`#${lastSection.id}`} />
-      </div>
+    </div>
+
+    <div class="nosotros-section__next">
+      <NextSectionButton target={`#${visionScrollTargetId}`} />
     </div>
   </div>
 </section>
 
+  <section
+    id={motivaMobileId}
+    class="nosotros-section nosotros-section--mobile-split nosotros-section--motiva-mobile"
+  >
+    <div class="site-shell">
+      <div class="nosotros-mobile-split">
+        <h2 class="nosotros-mobile-split__title">{firstSection.right.title}</h2>
+
+        <div class="nosotros-mobile-split__media">
+          <img
+            src={firstSection.right.image}
+            alt={firstSection.right.imageAlt}
+            class="nosotros-mobile-split__image"
+          />
+        </div>
+
+        <div class="nosotros-mobile-split__text">
+          {firstSection.right.paragraphs.map((paragraph) => (
+            <p>{paragraph}</p>
+          ))}
+        </div>
+      </div>
+
+      <div class="nosotros-section__next">
+        <NextSectionButton target={`#${hacemosMobileId}`} />
+      </div>
+    </div>
+  </section>
+
+  <section
+    id={hacemosMobileId}
+    class="nosotros-section nosotros-section--mobile-split nosotros-section--hacemos-mobile"
+  >
+    <div class="site-shell">
+      <div class="nosotros-mobile-split">
+        <h2 class="nosotros-mobile-split__title">{firstSection.left.title}</h2>
+
+        <div class="nosotros-mobile-split__media">
+          <img
+            src={firstSection.left.image}
+            alt={firstSection.left.imageAlt}
+            class="nosotros-mobile-split__image"
+          />
+        </div>
+
+        <div class="nosotros-mobile-split__text">
+          {firstSection.left.paragraphs.map((paragraph) => (
+            <p>{paragraph}</p>
+          ))}
+        </div>
+      </div>
+
+      <div class="nosotros-section__next">
+        <NextSectionButton target={`#${visionScrollTargetId}`} />
+      </div>
+    </div>
+  </section>
+
   <section id={lastSection.id} class="nosotros-section nosotros-section--vision">
+    <span
+      id={visionScrollTargetId}
+      class="nosotros-scroll-target"
+      aria-hidden="true"
+    ></span>
+
     <div class="site-shell nosotros-vision__shell">
       <div class="nosotros-vision">
         <div class="nosotros-vision__media">
