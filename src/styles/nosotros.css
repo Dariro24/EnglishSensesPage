@@ -457,3 +457,26 @@
     line-height: 1.35;
   }
 }
+
+@media (min-width: 992px) {
+  #como-hacemos {
+    padding-bottom: 56px;
+  }
+
+  #como-hacemos > .site-shell {
+    justify-content: center;
+  }
+
+  #como-hacemos .nosotros-dual {
+    flex: 0 1 auto;
+    padding-bottom: 32px;
+  }
+
+  #como-hacemos .nosotros-dual__next {
+    grid-column: 1 / -1;
+    grid-row: 3;
+    margin-top: -6px;
+    padding-top: 0;
+    justify-content: center;
+  }
+}
