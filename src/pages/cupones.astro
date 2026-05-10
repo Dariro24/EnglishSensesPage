@@ -38,8 +38,13 @@ const COUPON_CONFIG = couponContent;
     const savedKey = `cuponAsignado:${slug(lugarConvenio)}:${slug(tipoParam)}`;
     const savedCoupon = sessionStorage.getItem(savedKey);
 
-    if (savedCoupon) {
-      renderCoupon(JSON.parse(savedCoupon));
+    // Persistencia visual local; la redencion real siempre debe validarse fuera del navegador.
+    const storedCoupon = readStoredCoupon(savedKey, savedCoupon);
+
+    if (!isValidCouponRequest(lugarConvenio, tipoParam)) {
+      renderInvalidCouponLink();
+    } else if (storedCoupon) {
+      renderCoupon(storedCoupon);
     } else {
       renderInitialCoupon();
     }
@@ -54,6 +59,12 @@ const COUPON_CONFIG = couponContent;
       if (!button) return;
 
       button.disabled = true;
+
+      if (!isValidCouponRequest(lugarConvenio, tipoParam)) {
+        renderInvalidCouponLink();
+        return;
+      }
+
       renderLoadingCoupon();
 
       try {
@@ -79,7 +90,7 @@ const COUPON_CONFIG = couponContent;
         sessionStorage.setItem(savedKey, JSON.stringify(result.data));
         renderCoupon(result.data);
       } catch (error) {
-        console.error(error);
+        console.warn("No se pudo cargar el cupón.");
         renderErrorCoupon();
       }
     });
@@ -119,6 +130,53 @@ const COUPON_CONFIG = couponContent;
 
             <p class="coupon-card__whatsapp-text">
               ${escapeHTML(card.whatsappText)}
+            </p>
+
+            <p class="coupon-card__site">
+              ${escapeHTML(COUPON_CONFIG.website)}
+            </p>
+          </div>
+        </article>
+      `;
+    }
+
+    function renderInvalidCouponLink() {
+      const card = COUPON_CONFIG.invalidLinkCard;
+      const whatsapp = COUPON_CONFIG.whatsapp;
+
+      couponResult.innerHTML = `
+        <article class="coupon-card coupon-card--invalid">
+          <div class="coupon-card__top">
+            ${renderSplitLogo()}
+            ${renderMascot()}
+
+            <h1 class="coupon-card__invalid-title">
+              ${escapeHTML(card.title)}
+            </h1>
+
+            <p class="coupon-card__invalid-subtitle">
+              ${escapeHTML(card.subtitle)}
+            </p>
+
+            <a
+              class="coupon-card__invalid-button"
+              href="${escapeHTML(whatsapp.href)}"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              ${escapeHTML(card.buttonLabel)}
+            </a>
+          </div>
+
+          <div class="coupon-card__bottom">
+            <div class="coupon-card__code coupon-card__code--barcode coupon-card__code--wide">
+              <span class="coupon-card__code-text">
+                ${escapeHTML(card.codeText)}
+              </span>
+            </div>
+
+            <p class="coupon-card__invalid-message">
+              ${escapeHTML(card.message)}
             </p>
 
             <p class="coupon-card__site">
@@ -316,6 +374,55 @@ const COUPON_CONFIG = couponContent;
     function getTemplateByTipo(tipo) {
       const key = slug(tipo);
       return COUPON_CONFIG.templates[key] || COUPON_CONFIG.templates.default;
+    }
+
+    function readStoredCoupon(key, value) {
+      if (!value) return null;
+
+      try {
+        const coupon = JSON.parse(value);
+
+        if (!isValidCouponData(coupon)) {
+          sessionStorage.removeItem(key);
+          return null;
+        }
+
+        return coupon;
+      } catch {
+        sessionStorage.removeItem(key);
+        return null;
+      }
+    }
+
+    function isValidCouponRequest(lugar, tipo) {
+      const lugarKey = slug(lugar);
+      const tipoKey = slug(tipo);
+      const allowedTypes = Object.keys(COUPON_CONFIG.templates || {}).filter(
+        (key) => key !== "default"
+      );
+
+      return (
+        lugarKey.length > 0 &&
+        lugarKey.length <= 80 &&
+        tipoKey.length > 0 &&
+        tipoKey.length <= 80 &&
+        allowedTypes.includes(tipoKey)
+      );
+    }
+
+    function isValidCouponData(coupon) {
+      return (
+        coupon &&
+        typeof coupon === "object" &&
+        isCouponValue(coupon.tipo) &&
+        isCouponValue(coupon.descuento) &&
+        isCouponValue(coupon.codigo) &&
+        isCouponValue(coupon.vence)
+      );
+    }
+
+    function isCouponValue(value) {
+      return typeof value === "string" || typeof value === "number";
     }
 
     function slug(value) {

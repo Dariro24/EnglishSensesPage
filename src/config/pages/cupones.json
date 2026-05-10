@@ -33,6 +33,13 @@
             "buttonLabel": "INTENTAR NUEVAMENTE",
             "codeText": "REVISA TU CONEXIÓN Y VUELVE A INTENTAR"
         },
+        "invalidLinkCard": {
+            "title": "ENLACE INCOMPLETO",
+            "subtitle": "Este enlace no contiene los datos necesarios para asignar tu cupón.",
+            "message": "Escanea nuevamente el código QR o solicita ayuda por WhatsApp para recibir un enlace válido.",
+            "buttonLabel": "Solicitar ayuda",
+            "codeText": "ENLACE INCOMPLETO"
+        },
         "soldOutCard": {
             "title": "CUPONES<br />AGOTADOS",
             "pillText": "TENDREMOS DISPONIBLE EL DÍA 01",

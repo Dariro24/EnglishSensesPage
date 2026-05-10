@@ -1,0 +1,210 @@
+.not-found-page {
+  min-height: calc(100svh - var(--header-height-desktop));
+  display: flex;
+  align-items: center;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(255, 248, 235, 0.96)),
+    var(--color-surface);
+  padding-block: clamp(2.5rem, 5vw, 5.5rem);
+}
+
+.not-found-shell {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(280px, 0.95fr);
+  align-items: center;
+  gap: clamp(2rem, 5vw, 5rem);
+}
+
+.not-found-copy {
+  max-width: 650px;
+}
+
+.not-found-kicker {
+  margin: 0 0 0.65rem;
+  color: var(--color-accent);
+  font-family: var(--font-heading);
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0;
+}
+
+.not-found-title {
+  margin: 0;
+  color: var(--color-primary);
+  font-size: clamp(3rem, 7vw, 6.5rem);
+  font-weight: 900;
+  line-height: 0.95;
+  letter-spacing: 0;
+}
+
+.not-found-subtitle {
+  margin: clamp(1rem, 2vw, 1.4rem) 0 0;
+  color: var(--color-primary);
+  font-size: clamp(1.15rem, 2.1vw, 1.55rem);
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.not-found-text {
+  margin: 0.85rem 0 0;
+  max-width: 560px;
+  color: var(--color-text);
+  font-size: clamp(1rem, 1.35vw, 1.18rem);
+  font-weight: 650;
+  line-height: 1.45;
+}
+
+.not-found-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  margin-top: clamp(1.4rem, 2.8vw, 2.2rem);
+}
+
+.not-found-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 52px;
+  padding: 0.85rem 1.35rem;
+  border: 2px solid transparent;
+  border-radius: 999px;
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 900;
+  line-height: 1;
+  text-align: center;
+  text-decoration: none;
+  transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+}
+
+.not-found-button:hover {
+  transform: translateY(-2px);
+}
+
+.not-found-button--primary {
+  background: var(--color-primary);
+  color: #ffffff;
+  box-shadow: 0 14px 28px rgba(0, 74, 173, 0.18);
+}
+
+.not-found-button--secondary {
+  border-color: var(--color-primary);
+  background: #ffffff;
+  color: var(--color-primary);
+}
+
+.not-found-media {
+  display: flex;
+  justify-content: center;
+}
+
+.not-found-image {
+  width: min(100%, 390px);
+  max-height: min(58svh, 520px);
+  object-fit: contain;
+  filter: drop-shadow(0 22px 28px rgba(0, 74, 173, 0.16));
+}
+
+@media (max-width: 991px) {
+  .not-found-page {
+    min-height: calc(100svh - var(--header-height-tablet));
+    padding-block: 1.75rem 2rem;
+  }
+
+  .not-found-shell {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: 1rem;
+    text-align: center;
+  }
+
+  .not-found-copy {
+    width: min(100%, 620px);
+    max-width: 620px;
+  }
+
+  .not-found-title {
+    font-size: clamp(3rem, 6vw, 4.5rem);
+    line-height: 0.95;
+  }
+
+  .not-found-subtitle {
+    font-size: 1.05rem;
+    line-height: 1.28;
+  }
+
+  .not-found-text {
+    margin-inline: auto;
+    font-size: 1.05rem;
+    line-height: 1.35;
+  }
+
+  .not-found-actions {
+    width: min(100%, 420px);
+    justify-content: center;
+    margin-inline: auto;
+    margin-top: 1rem;
+  }
+
+  .not-found-media {
+    order: -1;
+  }
+
+  .not-found-image {
+    width: clamp(210px, 30vw, 280px);
+    max-height: 300px;
+  }
+}
+
+@media (max-width: 767px) {
+  .not-found-page {
+    min-height: calc(100svh - var(--header-height-mobile));
+    padding-block: 18px 24px;
+  }
+
+  .not-found-shell {
+    width: min(100%, 360px);
+    gap: 12px;
+  }
+
+  .not-found-kicker {
+    margin-top: 2px;
+    margin-bottom: 0.35rem;
+    font-size: 0.78rem;
+  }
+
+  .not-found-title {
+    font-size: clamp(2.15rem, 10vw, 3rem);
+    line-height: 0.95;
+  }
+
+  .not-found-subtitle {
+    font-size: 1rem;
+    line-height: 1.22;
+  }
+
+  .not-found-text {
+    font-size: 0.95rem;
+    line-height: 1.25;
+  }
+
+  .not-found-actions {
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.65rem;
+    margin-top: 8px;
+  }
+
+  .not-found-button {
+    width: 100%;
+    min-height: 46px;
+  }
+
+  .not-found-image {
+    width: clamp(150px, 44vw, 190px);
+    max-height: 210px;
+  }
+}
