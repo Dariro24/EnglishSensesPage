@@ -106,6 +106,10 @@ const COUPON_CONFIG = couponContent;
 
       couponResult.innerHTML = `
         <article class="coupon-card coupon-card--initial">
+          <a class="coupon-card__back-link" href="${escapeAttribute(card.backButtonHref)}">
+            ${escapeHTML(card.backButtonLabel)}
+          </a>
+
           <div class="coupon-card__top">
             ${renderSplitLogo()}
             ${renderMascot()}
@@ -447,6 +451,10 @@ const COUPON_CONFIG = couponContent;
       const div = document.createElement("div");
       div.textContent = value || "";
       return div.innerHTML;
+    }
+
+    function escapeAttribute(value) {
+      return escapeHTML(value).replace(/"/g, "&quot;");
     }
 
     function formatBreaks(value) {

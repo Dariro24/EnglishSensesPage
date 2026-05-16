@@ -17,6 +17,8 @@
             "title": "ENGLISH SENSES",
             "headline": "REDIME TU CUPÓN",
             "buttonLabel": "VER MI CUPÓN",
+            "backButtonLabel": "← Cambiar cupón",
+            "backButtonHref": "/promociones",
             "codeText": "HAZ CLIC EN EL BOTÓN PARA OBTENERLO",
             "transferText": "Cupón transferible",
             "whatsappText": "Después de obtener tu cupón, escríbenos por WhatsApp para redimirlo."
