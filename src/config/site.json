@@ -8,6 +8,7 @@
     { "label": "Nosotros", "href": "/nosotros" },
     { "label": "Cursos", "href": "/cursos" },
     { "label": "Servicios", "href": "/servicios" },
+    { "label": "Cupones", "href": "/promociones" },
     { "label": "Mide tu inglés", "href": "/mide-tu-ingles" }
   ],
   "links": {

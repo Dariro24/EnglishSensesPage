@@ -8,7 +8,13 @@ import couponContent from "../config/pages/cupones.json";
 const COUPON_CONFIG = couponContent;
 ---
 
-<MainLayout title="English Senses" showFooter={false}>
+<MainLayout
+  title="Cupones | English Senses"
+  description="Página de cupones de English Senses para redimir beneficios asociados a enlaces autorizados."
+  canonicalPath="/cupones"
+  robots="noindex, nofollow"
+  showFooter={false}
+>
   <main class="coupon-page">
     <section class="coupon-section">
       <div id="couponResult" class="coupon-result"></div>
@@ -397,16 +403,14 @@ const COUPON_CONFIG = couponContent;
     function isValidCouponRequest(lugar, tipo) {
       const lugarKey = slug(lugar);
       const tipoKey = slug(tipo);
-      const allowedTypes = Object.keys(COUPON_CONFIG.templates || {}).filter(
-        (key) => key !== "default"
-      );
 
       return (
         lugarKey.length > 0 &&
         lugarKey.length <= 80 &&
+        lugarKey !== "default" &&
         tipoKey.length > 0 &&
-        tipoKey.length <= 80 &&
-        allowedTypes.includes(tipoKey)
+        tipoKey.length <= 60 &&
+        tipoKey !== "default"
       );
     }
 

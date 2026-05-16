@@ -1,0 +1,64 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import promocionesContent from "../config/pages/promociones.json";
+import "../styles/promociones.css";
+
+const { seo, hero, cards, defaultLugarConvenio } = promocionesContent;
+
+const getCouponHref = (card) => {
+  const params = new URLSearchParams({
+    tipo: card.tipo || card.id,
+    lugar_convenio: card.lugar_convenio || defaultLugarConvenio,
+  });
+
+  return `/cupones?${params.toString()}`;
+};
+---
+
+<MainLayout
+  title={seo.title}
+  description={seo.description}
+  canonicalPath={seo.canonicalPath}
+>
+  <section class="promociones-page" aria-labelledby="promociones-title">
+    <div class="site-shell promociones-shell">
+      <div class="promociones-hero">
+        <div class="promociones-copy">
+          <p class="promociones-kicker">{hero.kicker}</p>
+          <h1 id="promociones-title" class="promociones-title">
+            {hero.title}
+          </h1>
+          <p class="promociones-subtitle">
+            {hero.subtitle}
+          </p>
+          <p class="promociones-description">{hero.description}</p>
+        </div>
+
+        <div class="promociones-media" aria-hidden="true">
+          <img
+            src={hero.image.src}
+            alt={hero.image.alt}
+            class="promociones-image"
+            loading="eager"
+            decoding="async"
+          />
+        </div>
+      </div>
+
+      <div class="promociones-grid" aria-label="Tipos de cupones">
+        {cards.map((card) => (
+          <article class="promociones-card">
+            <div class="promociones-card__content">
+              <h2 class="promociones-card__title">{card.title}</h2>
+              <p class="promociones-card__text">{card.description}</p>
+            </div>
+
+            <a class="promociones-card__button" href={getCouponHref(card)}>
+              {card.buttonLabel}
+            </a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+</MainLayout>

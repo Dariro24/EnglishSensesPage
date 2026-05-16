@@ -1,0 +1,44 @@
+{
+  "seo": {
+    "title": "Cupones y promociones | English Senses",
+    "description": "Elige un cupón de English Senses para cursos de adultos, niños o asesorías de inglés y accede a beneficios disponibles desde la página web.",
+    "canonicalPath": "/promociones"
+  },
+  "hero": {
+    "title": "Elige tu cupón",
+    "subtitle": "Selecciona el tipo de beneficio que quieres recibir y genera tu cupón.",
+    "description": "Estos beneficios están disponibles para usuarios que llegan desde nuestra página web.",
+    "kicker": "Beneficios disponibles",
+    "image": {
+      "src": "/media/home/hero/hero-personaje.webp",
+      "alt": ""
+    }
+  },
+  "defaultLugarConvenio": "pagina-web",
+  "cards": [
+    {
+      "id": "adultos",
+      "title": "Adultos",
+      "description": "Beneficio para cursos de inglés para adultos.",
+      "tipo": "adultos",
+      "lugar_convenio": "pagina-web",
+      "buttonLabel": "Generar cupón"
+    },
+    {
+      "id": "ninos",
+      "title": "Niños",
+      "description": "Beneficio para cursos o procesos de inglés para niños.",
+      "tipo": "ninos",
+      "lugar_convenio": "pagina-web",
+      "buttonLabel": "Generar cupón"
+    },
+    {
+      "id": "asesoria-tutoria",
+      "title": "Asesoría y tutoría",
+      "description": "Beneficio para apoyo personalizado, tareas, refuerzos o tutorías.",
+      "tipo": "asesoria-tutoria",
+      "lugar_convenio": "pagina-web",
+      "buttonLabel": "Generar cupón"
+    }
+  ]
+}
